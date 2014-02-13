@@ -152,6 +152,7 @@ $(document).bind("pageinit", function() {
                       }
 
                       if (since == "") {
+                          $("span#debug").val(defaultsince.getFullYear() + "/" + (defaultsince.getMonth()+1) + "/" + defaultsince.getDate());
                           $("input#sincedate").val(defaultsince.getFullYear() + "/" + (defaultsince.getMonth()+1) + "/" + defaultsince.getDate());
                       }
                       if (until == "") {
