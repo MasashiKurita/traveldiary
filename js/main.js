@@ -6,6 +6,13 @@ $(document).bind("pageinit", function() {
 
     $("div#top").bind("pageshow", function() {
         setTimeout(function(){
+            $.mobile.changePage("#login",{transition:"pop", role: 'dialog'});
+            $.mobile.changePage("#main",{transition:"fade"});
+        },3000);
+    });
+
+    $("div#login").bind("pageshow", function() {
+        setTimeout(function(){
             $.mobile.changePage("#main",{transition:"fade"});
         },3000);
     });
@@ -90,7 +97,7 @@ $(document).bind("pageinit", function() {
                               zoom: 3,
                               mapTypeId: google.maps.MapTypeId.ROADMAP
                           };
-                      var map = new google.maps.Map(document.getElementById('foot_mark2'), mapOptions);
+                      var map = new google.maps.Map(document.getElementById('mapcanvas'), mapOptions);
                       var bounds = new google.maps.LatLngBounds();
 
                       var defaultuntil = new Date("1970/1/1");
@@ -171,7 +178,7 @@ $(document).bind("pageinit", function() {
               }
         };
 
-        $("button#logout-button").bind("click", function(){
+        $("a#logout-button").bind("click", function(){
             FB.logout(function(){
 //                $.mobile.changePage("index.html", {
             });
