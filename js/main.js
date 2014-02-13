@@ -4,23 +4,10 @@ $(document).bind("mobileinit", function() {
 
 $(document).bind("pageinit", function() {
 
-    $("div#top").bind("pageshow", function() {
-        setTimeout(function(){
-            $.mobile.changePage("#login",{transition:"pop", role: 'dialog'});
-        },3000);
-    });
-
-    $("div#login").bind("pageshow", function() {
-//        setTimeout(function(){
-//            $.mobile.changePage("#main",{transition:"fade"});
-//        },3000);
-    });
-
     var uid;
     var since;
     var until;
-    var currentInfoWindow;
-    $("div#main").bind("pageshow", function() {
+    $("div#top").bind("pageshow", function() {
 
         $.ajaxSetup({ cache: true });
         $.getScript('//connect.facebook.net/en_UK/all.js', function(){
@@ -37,9 +24,12 @@ $(document).bind("pageinit", function() {
                 FB.getLoginStatus(function(response) {
                     if (response.session) {
                         alert("Logged in.");
+                        uid = response.authResponse.userID;
+                        $.mobile.changePage("#main",{transition:"fade"});
                     } else {
                         alert("Not Logged in.");
                         FB.login(function(response){
+                            $.mobile.changePage("#main",{transition:"fade"});
                         }, {scope: "user_status,user_checkins,read_stream"});
                     }
                 });
@@ -51,19 +41,81 @@ $(document).bind("pageinit", function() {
                     uid = response.authResponse.userID;
                     var since = $("input#sincedate").val();
                     var until = $("input#untildate").val();
-                    showCheckins(uid, since, until);
+                    $.mobile.changePage("#main",{transition:"fade"});
                 } else if (response.status === 'not_authorized') {
                     alert(response.status);
                     FB.login(function(response){
                     }, {scope: "user_status,user_checkins,read_stream"});
                 } else {
                     alert("Logged out.");
+                    $.mobile.changePage("#login",{transition:"pop", role: 'dialog'});
 //                    FB.login(function(response){
 //                    }, {scope: "user_status,user_checkins,read_stream"});
                 }
             });
 
         });
+
+//        setTimeout(function(){
+//            $.mobile.changePage("#login",{transition:"pop", role: 'dialog'});
+//        },3000);
+    });
+
+    $("div#login").bind("pageshow", function() {
+//        setTimeout(function(){
+//            $.mobile.changePage("#main",{transition:"fade"});
+//        },3000);
+    });
+
+    var currentInfoWindow;
+    $("div#main").bind("pageshow", function() {
+
+//        $.ajaxSetup({ cache: true });
+//        $.getScript('//connect.facebook.net/en_UK/all.js', function(){
+//
+//            FB.init({
+//                appId      : "698356506895047", // App ID
+//                status     : true, // check login status
+//                cookie     : true, // enable cookies to allow the server to access the session
+//                xfbml      : true,  // parse XFBML
+//                oauth      : true
+//            });
+//
+//            FB.Event.subscribe('xfbml.render', function() {
+//                FB.getLoginStatus(function(response) {
+//                    if (response.session) {
+//                        alert("Logged in.");
+//                    } else {
+//                        alert("Not Logged in.");
+//                        FB.login(function(response){
+//                        }, {scope: "user_status,user_checkins,read_stream"});
+//                    }
+//                });
+//            });
+//
+//            FB.Event.subscribe('auth.statusChange', function(response) {
+//                if (response.status === 'connected') {
+//                    console.log("userID: " + response.authResponse.userID);
+//                    uid = response.authResponse.userID;
+//                    var since = $("input#sincedate").val();
+//                    var until = $("input#untildate").val();
+//                    showCheckins(uid, since, until);
+//                } else if (response.status === 'not_authorized') {
+//                    alert(response.status);
+//                    FB.login(function(response){
+//                    }, {scope: "user_status,user_checkins,read_stream"});
+//                } else {
+//                    alert("Logged out.");
+////                    FB.login(function(response){
+////                    }, {scope: "user_status,user_checkins,read_stream"});
+//                }
+//            });
+//
+//        });
+
+        var since = $("input#sincedate").val();
+        var until = $("input#untildate").val();
+        showCheckins(uid, since, until);
 
         function attachInfoWindow(map, marker, infowindow) {
             google.maps.event.addListener(marker, 'click', function() {
@@ -184,7 +236,7 @@ $(document).bind("pageinit", function() {
 //            $.mobile.changePage("#fblogin", {
 //                transition: 'pop', role: 'dialog'
 //            });
-            $("div#sample3").pagecontainer("change", "#fblogin", { role: "dialog" } );
+//            $("div#sample3").pagecontainer("change", "#fblogin", { role: "dialog" } );
         });
 
         $("button#filter-button").bind("click", function() {
