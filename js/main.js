@@ -21,21 +21,17 @@ $(document).bind("pageinit", function() {
             });
 
             FB.Event.subscribe('xfbml.render', function() {
+                setTimeout(3000);
                 FB.getLoginStatus(function(response) {
                     if (response.session) {
                         uid = response.authResponse.userID;
-                        setTimeout(function() {
-                            $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
-                                transition: "fade"
-                            });
-                        }, 5000);
+                        $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
+                            transition: "fade"
+                        });
                     } else {
-                        FB.login(function(response){
-                            $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
-                                transition: "fade"
-                            });
-                        }, {
-                            scope: "user_status,user_checkins,read_stream"
+                        $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
+                            transition: "pop"
+                            role: "dialog"
                         });
                     }
                 });
