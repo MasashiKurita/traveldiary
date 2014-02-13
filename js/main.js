@@ -54,7 +54,7 @@ $(document).bind("pageinit", function() {
                 } else {
                     $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
                         transition  : "pop",
-                        role        : "dialog"'
+                        role        : "dialog"
                     });
                 }
             });
