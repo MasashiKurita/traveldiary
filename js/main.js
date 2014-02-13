@@ -65,7 +65,7 @@ $(document).bind("pageinit", function() {
 
     $("div#login").bind("pageshow", function() {
         // FIXME
-        $( ":mobile-pagecontainer" ).pagecontainer("change", "#top", { transition: "fade" } );
+//        $( ":mobile-pagecontainer" ).pagecontainer("change", "#top", { transition: "fade" } );
     });
 
     var currentInfoWindow;
