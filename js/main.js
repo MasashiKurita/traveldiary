@@ -84,7 +84,7 @@ $(document).bind("pageinit", function() {
               console.log('Welcome!  Fetching your information.... ');
               try {
 
-                  var url = '/' + uid + '/feed?limit=10000&fields=place,story,message';
+                  var url = '/' + uid + '/feed?date_format=U&limit=10000&fields=place,story,message';
                   if (since != "" && until != "") {
                       url = url + '&since=' + Math.round((new Date(since)).getTime() / 1000) + '&until=' + Math.round((new Date(until)).getTime() / 1000);
                   } else if (since != "") {
