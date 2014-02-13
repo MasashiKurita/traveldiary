@@ -7,14 +7,13 @@ $(document).bind("pageinit", function() {
     $("div#top").bind("pageshow", function() {
         setTimeout(function(){
             $.mobile.changePage("#login",{transition:"pop", role: 'dialog'});
-            $.mobile.changePage("#main",{transition:"fade"});
         },3000);
     });
 
     $("div#login").bind("pageshow", function() {
-        setTimeout(function(){
-            $.mobile.changePage("#main",{transition:"fade"});
-        },3000);
+//        setTimeout(function(){
+//            $.mobile.changePage("#main",{transition:"fade"});
+//        },3000);
     });
 
     var uid;
