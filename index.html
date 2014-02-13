@@ -8,7 +8,6 @@
     <!--1.スマートフォン画面での表示方法指定-->
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-
     <link rel="apple-touch-icon" href="./img/home.jpg" />
 
     <!--2.CSSの読み込み-->
@@ -50,7 +49,7 @@
     <!--5.ページの設定-->
     <div data-role="page" id="main">
 
-        <div id="leftpanel" data-role="panel" data-display="overlay" data-position="left">
+        <div id="leftpanel" data-role="panel" data-theme="a" data-display="overlay" data-position="left">
             <div data-role="fieldcontain">
                 <label for="sincedate">Since:</label>
                 <input id="sincedate" type="date" />
@@ -71,14 +70,11 @@
 
         <!--7.ページ内容の設定-->
         <div data-role="content" id="checkins">
-            <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
             <div id="mapcanvas"></div>
         </div>
 
-
         <!--8.フッターの設定-->
         <div data-role="footer" data-position="fixed">
-            <a data-rel="back" data-role="button">Back</a>
         </div>
 
     </div>

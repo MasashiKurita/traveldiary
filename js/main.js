@@ -104,7 +104,7 @@ $(document).bind("pageinit", function() {
                       var map = new google.maps.Map(document.getElementById('mapcanvas'), mapOptions);
                       var bounds = new google.maps.LatLngBounds();
 
-                      var defaultuntil = new Date("1970/1/1");
+                      var defaultuntil = new Date(1970, 1, 1);
                       var defaultsince = new Date();
                       var checkinlist = $("ul#checkin-list");
                       for(i=0; i<response.data.length; i++) {
@@ -113,7 +113,7 @@ $(document).bind("pageinit", function() {
                               var data = response.data[i];
 
                               var place = data.place;
-                              var created_time = new Date(data.created_time);
+                              var created_time = new Date(parseInt(data.created_time) * 1000);
                               checkinlist.append("<li>Checked in " + place.name + " on " + created_time + ".</li>");
 
                               var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
@@ -128,7 +128,7 @@ $(document).bind("pageinit", function() {
 
                               var link = "http://www.facebook.com/" + data.id;
                               var content = "Check-In: " + place.name + "<br />"
-                                          + "Date: " + created_time + ")<br />";
+                                          + "Date: " + created_time + "<br />";
                               if ("story" in data) {
                                   content = content + "Comment: " + data.story + "<br />";
                               } else if ("message" in data) {
