@@ -61,14 +61,6 @@ $(document).bind("pageinit", function() {
 
     $("div#login").bind("pageshow", function() {
         // FIXME
-        FB.getLoginStatus(function(response) {
-            if (response.session) {
-                uid = response.authResponse.userID;
-                $(":mobile-pagecontainer").pagecontainer("change", "#main", {
-                    transition: "fade"
-                });
-            }
-        });
     });
 
     var currentInfoWindow;
