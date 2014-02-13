@@ -25,13 +25,13 @@ $(document).bind("pageinit", function() {
                 FB.getLoginStatus(function(response) {
                     if (response.session) {
                         uid = response.authResponse.userID;
-                        $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
+                        $(":mobile-pagecontainer").pagecontainer("change", "#main", {
                             transition: "fade"
                         });
                     } else {
-                        $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
-                            transition: "pop"
-                            role: "dialog"
+                        $(":mobile-pagecontainer").pagecontainer("change", "#login", {
+                            transition  : "pop",
+                            role        : "dialog"
                         });
                     }
                 });
