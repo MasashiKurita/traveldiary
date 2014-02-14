@@ -157,7 +157,8 @@ $(document).bind("pageinit", function() {
 //                          $("input#sincedate").attr("value", "1970/01/01");
                       }
                       if (until == "") {
-                          $("input#untildate").val(defaultuntil.getFullYear() + "/" + (defaultuntil.getMonth()+1) + "/" + defaultuntil.getDate());
+                          $("input#untildate").val(defaultuntil.getFullYear() + "/" + ("0"+(defaultuntil.getMonth()+1)).slice(-2) + "/" + defaultuntil.getDate());
+//                          $("input#sincedate").val("2050/12/31");
                       }
 
                       checkinlist.listview('refresh');
