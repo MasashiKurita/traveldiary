@@ -152,13 +152,10 @@ $(document).bind("pageinit", function() {
                       }
 
                       if (since == "") {
-//                          $("input#sincedate").val(defaultsince.getFullYear() + "/" + (defaultsince.getMonth()+1) + "/" + defaultsince.getDate());
-                          $("input#sincedate").val("1970/01/01");
-//                          $("input#sincedate").attr("value", "1970/01/01");
+                          $("input#sincedate").val(defaultsince.getFullYear() + "/" + ("0"+(defaultsince.getMonth()+1)).slice(-2) + "/" + defaultsince.getDate());
                       }
                       if (until == "") {
                           $("input#untildate").val(defaultuntil.getFullYear() + "/" + ("0"+(defaultuntil.getMonth()+1)).slice(-2) + "/" + defaultuntil.getDate());
-//                          $("input#sincedate").val("2050/12/31");
                       }
 
                       checkinlist.listview('refresh');
