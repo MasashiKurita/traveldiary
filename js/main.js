@@ -154,7 +154,7 @@ $(document).bind("pageinit", function() {
                       if (since == "") {
 //                          $("input#sincedate").val(defaultsince.getFullYear() + "/" + (defaultsince.getMonth()+1) + "/" + defaultsince.getDate());
                           $("input#sincedate").val("1970/01/01");
-                          $("input#sincedate").attr("value", "1970/01/01");
+//                          $("input#sincedate").attr("value", "1970/01/01");
                       }
                       if (until == "") {
                           $("input#untildate").val(defaultuntil.getFullYear() + "/" + (defaultuntil.getMonth()+1) + "/" + defaultuntil.getDate());
