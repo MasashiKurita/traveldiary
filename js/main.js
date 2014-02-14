@@ -152,7 +152,7 @@ $(document).bind("pageinit", function() {
                       }
 
                       if (since == "") {
-                          $("input#sincedate").val(defaultsince.getFullYear() + "/" + ("0"+(defaultsince.getMonth()+1)).slice(-2) + "/" + defaultsince.getDate());
+                          $("input#sincedate").val(defaultsince.getFullYear() + "-" + ("0"+(defaultsince.getMonth()+1)).slice(-2) + "-" + defaultsince.getDate());
                       }
                       if (until == "") {
                           $("input#untildate").val(defaultuntil.getFullYear() + "/" + ("0"+(defaultuntil.getMonth()+1)).slice(-2) + "/" + defaultuntil.getDate());
