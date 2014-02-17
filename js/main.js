@@ -77,7 +77,7 @@ $(document).on("pagecreate", function(){
         });
     }
 
-    $("div#top").bind("pagecreate", function() {
+    $("div#top").bind("pageshow", function() {
         console.log("pageshow of div#top triggered");
         setTimeout(5000);
         loginCheck();
