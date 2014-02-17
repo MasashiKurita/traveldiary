@@ -80,6 +80,20 @@ $(document).bind("pageinit", function() {
             });
         }
 
+        function dateToString(objDate) {
+            var userAgent = window.navigator.userAgent.toLowerCase();
+
+            var dateStr = "";
+
+            if (userAgent.indexOf('safari') != -1) {
+                dateStr = objDate.getFullYear() + "-" + ("0"+(objDate.getMonth()+1)).slice(-2) + "-" + objDate.getDate();
+            } else {
+                dateStr = objDate.getFullYear() + "/" + ("0"+(objDate.getMonth()+1)).slice(-2) + "/" + objDate.getDate();
+            }
+
+            return dateStr;
+        }
+
         function showCheckins(uid, since, until) {
               console.log('Welcome!  Fetching your information.... ');
               try {
@@ -152,10 +166,10 @@ $(document).bind("pageinit", function() {
                       }
 
                       if (since == "") {
-                          $("input#sincedate").val(defaultsince.getFullYear() + "-" + ("0"+(defaultsince.getMonth()+1)).slice(-2) + "-" + defaultsince.getDate());
+                          $("input#sincedate").val(dateToString(defaultsince));
                       }
                       if (until == "") {
-                          $("input#untildate").val(defaultuntil.getFullYear() + "/" + ("0"+(defaultuntil.getMonth()+1)).slice(-2) + "/" + defaultuntil.getDate());
+                          $("input#untildate").val(dateToString(defaultuntil));
                       }
 
                       checkinlist.listview('refresh');
