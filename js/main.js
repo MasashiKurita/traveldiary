@@ -78,6 +78,7 @@ $(document).on("mobileinit", function(){
     }
 
     $("div#top").on("pagecontainershow", function() {
+        console.log("pagecontainershow of div#top triggered");
         setTimeout(5000);
         loginCheck();
 
