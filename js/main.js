@@ -1,5 +1,6 @@
 $(document).on("mobileinit", function(){
 
+    console.log("mobileinit triggered");
     var uid;
     var since;
     var until;
