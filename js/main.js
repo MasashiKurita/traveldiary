@@ -1,4 +1,4 @@
-$(document).on("mobileinit", function(){
+$(document).on("pageinit", function(){
 
     console.log("mobileinit triggered");
     var uid;
