@@ -81,8 +81,8 @@ $(document).bind("pageinit", function() {
     }
 
     $("div#top").bind("pageshow", function() {
-//        setTimeout(5000);
-//        loginCheck();
+        setTimeout(5000);
+        loginCheck();
 
 //        $.ajaxSetup({ cache: true });
 //        $.getScript('//connect.facebook.net/en_UK/all.js', function(){
