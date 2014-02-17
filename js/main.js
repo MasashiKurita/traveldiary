@@ -62,8 +62,7 @@ $(document).bind("pageinit", function() {
 
     });
 
-    $("div#top").bind("pageshow", function() {
-        setTimeout(3000);
+    function loginCheck() {
         FB.getLoginStatus(function(response) {
             if (response.session) {
                 console.log("response.session=not null");
@@ -79,6 +78,11 @@ $(document).bind("pageinit", function() {
                 });
             }
         });
+    }
+
+    $("div#top").bind("pageshow", function() {
+        setTimeout(3000);
+        loginCheck();
 
 //        $.ajaxSetup({ cache: true });
 //        $.getScript('//connect.facebook.net/en_UK/all.js', function(){
