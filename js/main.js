@@ -1,6 +1,6 @@
-$(document).on("pageinit", function(){
+$(document).on("pagecreate", function(){
 
-    console.log("mobileinit triggered");
+    console.log("mobilecreate triggered");
     var uid;
     var since;
     var until;
@@ -77,7 +77,7 @@ $(document).on("pageinit", function(){
         });
     }
 
-    $("div#top").bind("pageshow", function() {
+    $("div#top").on("pagecreate", function() {
         console.log("pageshow of div#top triggered");
         setTimeout(5000);
         loginCheck();
