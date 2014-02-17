@@ -20,24 +20,24 @@ $(document).bind("pageinit", function() {
             oauth      : true
         });
 
-        FB.Event.subscribe('xfbml.render', function() {
-            setTimeout(3000);
-            FB.getLoginStatus(function(response) {
-                if (response.session) {
-                    console.log("response.session=not null");
-                    uid = response.authResponse.userID;
-                    $(":mobile-pagecontainer").pagecontainer("change", "#main", {
-                        transition: "fade"
-                    });
-                } else {
-                    console.log("response.session=null");
+//        FB.Event.subscribe('xfbml.render', function() {
+//            setTimeout(3000);
+//            FB.getLoginStatus(function(response) {
+//                if (response.session) {
+//                    console.log("response.session=not null");
+//                    uid = response.authResponse.userID;
+//                    $(":mobile-pagecontainer").pagecontainer("change", "#main", {
+//                        transition: "fade"
+//                    });
+//                } else {
+//                    console.log("response.session=null");
 //                    $(":mobile-pagecontainer").pagecontainer("change", "#login", {
 //                        transition  : "pop",
 //                        role        : "dialog"
 //                    });
-                }
-            });
-        });
+//                }
+//            });
+//        });
 
         FB.Event.subscribe('auth.statusChange', function(response) {
             if (response.status === 'connected') {
