@@ -61,6 +61,7 @@ $(document).bind("pageinit", function() {
         });
 
     });
+    setTimeout(5000);
 
     function loginCheck() {
         FB.getLoginStatus(function(response) {
@@ -81,7 +82,6 @@ $(document).bind("pageinit", function() {
     }
 
     $("div#top").bind("pageshow", function() {
-        setTimeout(3000);
         loginCheck();
 
 //        $.ajaxSetup({ cache: true });
