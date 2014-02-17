@@ -9,7 +9,7 @@ $(document).bind("pageinit", function() {
     var until;
 
 
-    $.ajaxSetup({ cache: true });
+    $.ajaxSetup({ cache: true, async: false });
     $.getScript('//connect.facebook.net/en_UK/all.js', function(){
 
         FB.init({
