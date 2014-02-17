@@ -53,10 +53,10 @@ $(document).bind("pageinit", function() {
                 }, {scope: "user_status,user_checkins,read_stream"});
             } else {
                 console.log("response.status=null");
-                $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
-                    transition  : "pop",
-                    role        : "dialog"
-                });
+//                $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
+//                    transition  : "pop",
+//                    role        : "dialog"
+//                });
             }
         });
 
