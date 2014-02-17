@@ -1,6 +1,6 @@
 $(document).on("pagecreate", function(){
 
-    console.log("mobilecreate triggered");
+    console.log("pagecreate triggered");
     var uid;
     var since;
     var until;
@@ -77,7 +77,7 @@ $(document).on("pagecreate", function(){
         });
     }
 
-    $("div#top").on("pagecreate", function() {
+    $("div#top").bind("pagecreate", function() {
         console.log("pageshow of div#top triggered");
         setTimeout(5000);
         loginCheck();
