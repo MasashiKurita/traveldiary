@@ -76,7 +76,7 @@ $(document).on("mobileinit", function(){
         });
     }
 
-    $("div#top").on("pagecreate", function() {
+    $("div#top").on("pagecontainershow", function() {
         setTimeout(5000);
         loginCheck();
 
