@@ -24,11 +24,13 @@ $(document).bind("pageinit", function() {
                 setTimeout(3000);
                 FB.getLoginStatus(function(response) {
                     if (response.session) {
+                        cosole.log("response.session=not null");
                         uid = response.authResponse.userID;
                         $(":mobile-pagecontainer").pagecontainer("change", "#main", {
                             transition: "fade"
                         });
                     } else {
+                        cosole.log("response.session=null");
                         $(":mobile-pagecontainer").pagecontainer("change", "#login", {
                             transition  : "pop",
                             role        : "dialog"
@@ -39,15 +41,18 @@ $(document).bind("pageinit", function() {
 
             FB.Event.subscribe('auth.statusChange', function(response) {
                 if (response.status === 'connected') {
+                    cosole.log("response.status=connected");
                     console.log("userID: " + response.authResponse.userID);
                     uid = response.authResponse.userID;
                     $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
                         transition: "fade"
                     });
                 } else if (response.status === 'not_authorized') {
+                    cosole.log("response.status=not_authorized");
                     FB.login(function(response){
                     }, {scope: "user_status,user_checkins,read_stream"});
                 } else {
+                    cosole.log("response.status=null");
                     $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
                         transition  : "pop",
                         role        : "dialog"
