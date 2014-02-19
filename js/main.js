@@ -122,19 +122,26 @@ $(document).on("pageshow", "div#login", function(event) {
 
     FB.getLoginStatus(function(response) {
         console.log(response);
-        if (response.session) {
+        if (response.status === 'connected') {
             console.log("response.session=not null");
             uid = response.authResponse.userID;
             $(":mobile-pagecontainer").pagecontainer("change", "#main", {
                 transition: "fade"
             });
-        } else {
-            console.log("response.session=null");
-            $(":mobile-pagecontainer").pagecontainer("change", "#login", {
-                transition  : "pop",
-                role        : "dialog"
-            });
         }
+//        if (response.session) {
+//            console.log("response.session=not null");
+//            uid = response.authResponse.userID;
+//            $(":mobile-pagecontainer").pagecontainer("change", "#main", {
+//                transition: "fade"
+//            });
+//        } else {
+//            console.log("response.session=null");
+//            $(":mobile-pagecontainer").pagecontainer("change", "#login", {
+//                transition  : "pop",
+//                role        : "dialog"
+//            });
+//        }
     });
 
 });
