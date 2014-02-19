@@ -1,33 +1,5 @@
 $("div#fb-root").load(function() {
     console.log("fb loaded");
-       FB.init({
-            appId      : "698356506895047", // App ID
-            status     : true, // check login status
-            cookie     : true, // enable cookies to allow the server to access the session
-            xfbml      : true,  // parse XFBML
-            oauth      : true
-        });
-
-        FB.Event.subscribe('auth.statusChange', function(response) {
-            if (response.status === 'connected') {
-                console.log("response.status=connected");
-                console.log("userID: " + response.authResponse.userID);
-                uid = response.authResponse.userID;
-                $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
-                    transition: "fade"
-                });
-            } else if (response.status === 'not_authorized') {
-                console.log("response.status=not_authorized");
-                FB.login(function(response){
-                }, {scope: "user_status,user_checkins,read_stream"});
-            } else {
-                console.log("response.status=null");
-                $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
-                    transition  : "pop",
-                    role        : "dialog"
-                });
-            }
-        });
 });
 
 //    $.ajaxSetup({ cache: true });
@@ -106,6 +78,35 @@ var until;
 
 $(document).on("pageshow", "div#top", function(event) {
     console.log("div#top showed");
+
+    FB.init({
+        appId      : "698356506895047", // App ID
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true,  // parse XFBML
+        oauth      : true
+    });
+
+    FB.Event.subscribe('auth.statusChange', function(response) {
+        if (response.status === 'connected') {
+            console.log("response.status=connected");
+            console.log("userID: " + response.authResponse.userID);
+            uid = response.authResponse.userID;
+            $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
+                transition: "fade"
+            });
+        } else if (response.status === 'not_authorized') {
+            console.log("response.status=not_authorized");
+            FB.login(function(response){
+            }, {scope: "user_status,user_checkins,read_stream"});
+        } else {
+            console.log("response.status=null");
+            $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
+                transition  : "pop",
+                role        : "dialog"
+            });
+        }
+    });
 
     setTimeout(function() {
         $(":mobile-pagecontainer").pagecontainer("change", "#login", {
