@@ -1,4 +1,5 @@
 $("div#fb-root").load(function() {
+    console.log("fb loaded");
        FB.init({
             appId      : "698356506895047", // App ID
             status     : true, // check login status
