@@ -5,6 +5,18 @@ var until;
 $(document).on("pageshow", "div#top", function(event) {
     console.log("div#top showed");
 
+    setTimeout(function() {
+        $(":mobile-pagecontainer").pagecontainer("change", "#login", {
+            transition  : "pop",
+            role        : "dialog"
+        });
+    }, 3000);
+
+});
+
+$(document).on("pageshow", "div#login", function(event) {
+    console.log("div#login showed");
+
     $.ajaxSetup({ cache: true });
     $.getScript('//connect.facebook.net/en_UK/all.js', function(){
 
@@ -57,11 +69,6 @@ $(document).on("pageshow", "div#top", function(event) {
 
     });
 
-});
-
-$(document).on("pageshow", "div#login", function(event) {
-    // FIXME
-    console.log("div#login showed");
 });
 
 var currentInfoWindow;
