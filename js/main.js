@@ -1,4 +1,5 @@
-        FB.init({
+$("document").on("pageshow", "div#fb-root", function() {
+       FB.init({
             appId      : "698356506895047", // App ID
             status     : true, // check login status
             cookie     : true, // enable cookies to allow the server to access the session
@@ -26,6 +27,7 @@
                 });
             }
         });
+});
 
 //    $.ajaxSetup({ cache: true });
 //    $.getScript('//connect.facebook.net/en_UK/all.js', function(){
