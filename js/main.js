@@ -18,7 +18,6 @@ $(document).on("pagecreate", function(){
         });
 
         FB.Event.subscribe('xfbml.render', function() {
-            setTimeout(3000);
             FB.getLoginStatus(function(response) {
                 if (response.session) {
                     console.log("response.session=not null");
@@ -76,9 +75,12 @@ $(document).on("pagecreate", function(){
             }
         });
     }
+    $(document).on("pagecreate", "div#top", function() {
+        console.log("div#top on event triggered");
+    });
 
     $("div#top").bind("pageshow", function() {
-//        console.log("pageshow of div#top triggered");
+        console.log("div#top binded event triggered");
 //        setTimeout(5000);
 //        loginCheck();
 
