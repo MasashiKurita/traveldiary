@@ -87,7 +87,7 @@ $(document).on("pageshow", "div#top", function(event) {
         oauth      : true
     });
 
-    FB.Event.subscribe('auth.statusChange', function(response) {
+    FB.Event.subscribe('auth.authResponseChange', function(response) {
         if (response.status === 'connected') {
             console.log("response.status=connected");
             console.log("userID: " + response.authResponse.userID);
