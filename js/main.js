@@ -1,6 +1,3 @@
-$(document).ready(function(event) {
-//$(document).on("load", "body", function(event) {
-    console.log(event.data + " created");
 var uid;
 var since;
 var until;
@@ -212,8 +209,6 @@ $(document).bind("pageshow", "div#main", function(event) {
         var until = $("input#untildate").val();
         showCheckins(uid, since, until);
     });
-
-});
 
 });
 
