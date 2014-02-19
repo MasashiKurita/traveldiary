@@ -144,6 +144,14 @@ $(document).on("pageshow", "div#login", function(event) {
 //        }
     });
 
+    $("a#login-button").on("click", function(){
+        FB.login(function(response){
+            $(":mobile-pagecontainer").pagecontainer("change", "#main", {
+                transition: "fade"
+            });
+        }, {scope: "user_status,user_checkins,read_stream"});
+    });
+
 });
 
 var currentInfoWindow;
@@ -282,11 +290,11 @@ $(document).on("pageshow", "div#main", function(event) {
         }
     };
 
-    $("a#logout-button").bind("click", function(){
+    $("a#logout-button").on("click", function(){
         FB.logout();
     });
 
-    $("a#filter-button").bind("click", function() {
+    $("a#filter-button").on("click", function() {
         $("ul#checkin-list").empty();
         $("div#mapcanvas").empty();
         var since = $("input#sincedate").val();
