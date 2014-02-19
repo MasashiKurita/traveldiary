@@ -139,7 +139,8 @@ $(document).on("pageshow", "div#login", function(event) {
 });
 
 var currentInfoWindow;
-$(document).bind("pageshow", "div#main", function(event) {
+//$(document).bind("pageshow", "div#main", function(event) {
+$(document).bind("pagechange", "div#main", function(event) {
     console.log("div#main showed");
 
     since = $("input#sincedate").val();
