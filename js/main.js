@@ -5,7 +5,7 @@ var since;
 var until;
 
 $(document).on("pageshow", "div#top", function(event) {
-    console.log(event.data + " showed");
+    console.log("div#top showed");
 
     $.ajaxSetup({ cache: true });
     $.getScript('//connect.facebook.net/en_UK/all.js', function(){
@@ -63,12 +63,12 @@ $(document).on("pageshow", "div#top", function(event) {
 
 $(document).on("pageshow", "div#login", function(event) {
     // FIXME
-    console.log(event.data + " showed");
+    console.log("div#login showed");
 });
 
 var currentInfoWindow;
 $(document).bind("pageshow", "div#main", function(event) {
-    console.log(event.data + " showed");
+    console.log("div#main showed");
 
     since = $("input#sincedate").val();
     until = $("input#untildate").val();
