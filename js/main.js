@@ -61,13 +61,13 @@ $(document).on("pageshow", "div#top", function(event) {
 
 });
 
-$(document).on("pageshow", "div#login", function() {
+$(document).on("pageshow", "div#login", function(event) {
     // FIXME
     console.log(event.data + " showed");
 });
 
 var currentInfoWindow;
-$(document).bind("pageshow", "div#main", function() {
+$(document).bind("pageshow", "div#main", function(event) {
     console.log(event.data + " showed");
 
     since = $("input#sincedate").val();
