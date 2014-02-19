@@ -75,7 +75,7 @@ $(document).on("pagecreate", function(){
             }
         });
     }
-    $(document).on("pagecreate", "div#top", function() {
+    $(document).on("pageshow", "div#top", function() {
         console.log("div#top on event triggered");
     });
 
