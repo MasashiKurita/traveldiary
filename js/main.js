@@ -1,12 +1,13 @@
+$(document).on("pagecreate", function(event) {
+    console.log(event.data + " created");
 var uid;
 var since;
 var until;
 
 $(document).on("pageshow", "div#top", function(event) {
-    console.log(event);
-    console.log("div#top pageshow event triggered");
+    console.log(event.data + " showed");
 
-    $.ajaxSetup({ cache: true, async: false });
+    $.ajaxSetup({ cache: true });
     $.getScript('//connect.facebook.net/en_UK/all.js', function(){
 
         FB.init({
@@ -62,14 +63,12 @@ $(document).on("pageshow", "div#top", function(event) {
 
 $(document).on("pageshow", "div#login", function() {
     // FIXME
-    console.log(event);
-    console.log("div#login pageshow event triggered");
+    console.log(event.data + " showed");
 });
 
 var currentInfoWindow;
 $(document).bind("pageshow", "div#main", function() {
-    console.log(event);
-    console.log("div#main pageshow event triggered");
+    console.log(event.data + " showed");
 
     since = $("input#sincedate").val();
     until = $("input#untildate").val();
@@ -212,6 +211,8 @@ $(document).bind("pageshow", "div#main", function() {
         var until = $("input#untildate").val();
         showCheckins(uid, since, until);
     });
+
+});
 
 });
 
