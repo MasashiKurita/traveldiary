@@ -1,22 +1,3 @@
-var uid;
-var since;
-var until;
-
-$(document).on("pageshow", "div#top", function(event) {
-    console.log("div#top showed");
-
-    setTimeout(function() {
-        $(":mobile-pagecontainer").pagecontainer("change", "#login", {
-            transition  : "pop",
-            role        : "dialog"
-        });
-    }, 3000);
-
-});
-
-$(document).on("pageshow", "div#login", function(event) {
-    console.log("div#login showed");
-
     $.ajaxSetup({ cache: true });
     $.getScript('//connect.facebook.net/en_UK/all.js', function(){
 
@@ -28,23 +9,39 @@ $(document).on("pageshow", "div#login", function(event) {
             oauth      : true
         });
 
-        FB.Event.subscribe('xfbml.render', function() {
-            FB.getLoginStatus(function(response) {
-                if (response.session) {
-                    console.log("response.session=not null");
-                    uid = response.authResponse.userID;
-                    $(":mobile-pagecontainer").pagecontainer("change", "#main", {
-                        transition: "fade"
-                    });
-                } else {
-                    console.log("response.session=null");
-                    $(":mobile-pagecontainer").pagecontainer("change", "#login", {
-                        transition  : "pop",
-                        role        : "dialog"
-                    });
-                }
-            });
-        });
+//        FB.getLoginStatus(function(response) {
+//            if (response.session) {
+//                console.log("response.session=not null");
+//                uid = response.authResponse.userID;
+//                $(":mobile-pagecontainer").pagecontainer("change", "#main", {
+//                    transition: "fade"
+//                });
+//            } else {
+//                console.log("response.session=null");
+//                $(":mobile-pagecontainer").pagecontainer("change", "#login", {
+//                    transition  : "pop",
+//                    role        : "dialog"
+//                });
+//            }
+//        });
+
+//        FB.Event.subscribe('xfbml.render', function() {
+//            FB.getLoginStatus(function(response) {
+//                if (response.session) {
+//                    console.log("response.session=not null");
+//                    uid = response.authResponse.userID;
+//                    $(":mobile-pagecontainer").pagecontainer("change", "#main", {
+//                        transition: "fade"
+//                    });
+//                } else {
+//                    console.log("response.session=null");
+//                    $(":mobile-pagecontainer").pagecontainer("change", "#login", {
+//                        transition  : "pop",
+//                        role        : "dialog"
+//                    });
+//                }
+//            });
+//        });
 
         FB.Event.subscribe('auth.statusChange', function(response) {
             if (response.status === 'connected') {
@@ -67,6 +64,43 @@ $(document).on("pageshow", "div#login", function(event) {
             }
         });
 
+    });
+
+
+
+var uid;
+var since;
+var until;
+
+$(document).on("pageshow", "div#top", function(event) {
+    console.log("div#top showed");
+
+    setTimeout(function() {
+        $(":mobile-pagecontainer").pagecontainer("change", "#login", {
+            transition  : "pop",
+            role        : "dialog"
+        });
+    }, 3000);
+
+});
+
+$(document).on("pageshow", "div#login", function(event) {
+    console.log("div#login showed");
+
+    FB.getLoginStatus(function(response) {
+        if (response.session) {
+            console.log("response.session=not null");
+            uid = response.authResponse.userID;
+            $(":mobile-pagecontainer").pagecontainer("change", "#main", {
+                transition: "fade"
+            });
+        } else {
+            console.log("response.session=null");
+            $(":mobile-pagecontainer").pagecontainer("change", "#login", {
+                transition  : "pop",
+                role        : "dialog"
+            });
+        }
     });
 
 });
