@@ -1,7 +1,15 @@
-    $(document).on("pageshow", "div#top", function() {
-        console.log("div#top on event triggered (out)");
-    });
+$(document).on("pageshow", "div#top", function() {
+    console.log("div#top on pageshow event triggered (out)");
+});
 
+$(document).on("pageload", "div#top", function() {
+    console.log("div#top on pageload event triggered (out)");
+});
+
+$(document).on("pagecontainershow", "div#top", function(event) {
+    console.log("div#top on pagecontainershow event triggered (out)");
+    console.log(event);
+});
 
 $(document).on("pagecreate", function(){
 
