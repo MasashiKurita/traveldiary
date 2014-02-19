@@ -121,6 +121,7 @@ $(document).on("pageshow", "div#login", function(event) {
     console.log("div#login showed");
 
     FB.getLoginStatus(function(response) {
+        console.log(response);
         if (response.session) {
             console.log("response.session=not null");
             uid = response.authResponse.userID;
