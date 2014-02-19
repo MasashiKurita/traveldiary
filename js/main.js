@@ -109,9 +109,20 @@ $(document).on("pageshow", "div#top", function(event) {
     });
 
     setTimeout(function() {
-        $(":mobile-pagecontainer").pagecontainer("change", "#login", {
-            transition  : "pop",
-            role        : "dialog"
+        FB.getLoginStatus(function(response) {
+            console.log(response);
+            if (response.status === 'connected') {
+                console.log("response.session=not null");
+                uid = response.authResponse.userID;
+                $(":mobile-pagecontainer").pagecontainer("change", "#main", {
+                    transition: "fade"
+                });
+            } else {
+                $(":mobile-pagecontainer").pagecontainer("change", "#login", {
+                    transition  : "pop",
+                    role        : "dialog"
+                });
+            }
         });
     }, 3000);
 
@@ -129,19 +140,6 @@ $(document).on("pageshow", "div#login", function(event) {
                 transition: "fade"
             });
         }
-//        if (response.session) {
-//            console.log("response.session=not null");
-//            uid = response.authResponse.userID;
-//            $(":mobile-pagecontainer").pagecontainer("change", "#main", {
-//                transition: "fade"
-//            });
-//        } else {
-//            console.log("response.session=null");
-//            $(":mobile-pagecontainer").pagecontainer("change", "#login", {
-//                transition  : "pop",
-//                role        : "dialog"
-//            });
-//        }
     });
 
     $("a#login-button").on("click", function(){
