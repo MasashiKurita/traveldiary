@@ -1,3 +1,8 @@
+    $(document).on("pageshow", "div#top", function() {
+        console.log("div#top on event triggered");
+    });
+
+
 $(document).on("pagecreate", function(){
 
     console.log("pagecreate triggered");
@@ -75,9 +80,6 @@ $(document).on("pagecreate", function(){
             }
         });
     }
-    $(document).on("pageshow", "div#top", function() {
-        console.log("div#top on event triggered");
-    });
 
     $("div#top").bind("pageshow", function() {
         console.log("div#top binded event triggered");
