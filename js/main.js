@@ -1,5 +1,5 @@
     $(document).on("pageshow", "div#top", function() {
-        console.log("div#top on event triggered");
+        console.log("div#top on event triggered (out)");
     });
 
 
