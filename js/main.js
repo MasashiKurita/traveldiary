@@ -1,4 +1,4 @@
-$(document).on("pagecreate", function(event) {
+$(document).on("load", "body", function(event) {
     console.log(event.data + " created");
 var uid;
 var since;
