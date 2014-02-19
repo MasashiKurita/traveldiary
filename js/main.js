@@ -139,8 +139,8 @@ $(document).on("pageshow", "div#login", function(event) {
 });
 
 var currentInfoWindow;
-//$(document).bind("pageshow", "div#main", function(event) {
-$(document).bind("pagechange", "div#main", function(event) {
+//$(document).on("pageshow", "div#main", function(event) {
+$(document).on("pagechange", "div#main", function(event) {
     console.log(event);
     console.log("div#main showed");
 
