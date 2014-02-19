@@ -1,6 +1,3 @@
-    $.ajaxSetup({ cache: true });
-    $.getScript('//connect.facebook.net/en_UK/all.js', function(){
-
         FB.init({
             appId      : "698356506895047", // App ID
             status     : true, // check login status
@@ -8,6 +5,38 @@
             xfbml      : true,  // parse XFBML
             oauth      : true
         });
+
+        FB.Event.subscribe('auth.statusChange', function(response) {
+            if (response.status === 'connected') {
+                console.log("response.status=connected");
+                console.log("userID: " + response.authResponse.userID);
+                uid = response.authResponse.userID;
+                $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
+                    transition: "fade"
+                });
+            } else if (response.status === 'not_authorized') {
+                console.log("response.status=not_authorized");
+                FB.login(function(response){
+                }, {scope: "user_status,user_checkins,read_stream"});
+            } else {
+                console.log("response.status=null");
+                $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
+                    transition  : "pop",
+                    role        : "dialog"
+                });
+            }
+        });
+
+//    $.ajaxSetup({ cache: true });
+//    $.getScript('//connect.facebook.net/en_UK/all.js', function(){
+//
+//        FB.init({
+//            appId      : "698356506895047", // App ID
+//            status     : true, // check login status
+//            cookie     : true, // enable cookies to allow the server to access the session
+//            xfbml      : true,  // parse XFBML
+//            oauth      : true
+//        });
 
 //        FB.getLoginStatus(function(response) {
 //            if (response.session) {
@@ -43,28 +72,28 @@
 //            });
 //        });
 
-        FB.Event.subscribe('auth.statusChange', function(response) {
-            if (response.status === 'connected') {
-                console.log("response.status=connected");
-                console.log("userID: " + response.authResponse.userID);
-                uid = response.authResponse.userID;
-                $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
-                    transition: "fade"
-                });
-            } else if (response.status === 'not_authorized') {
-                console.log("response.status=not_authorized");
-                FB.login(function(response){
-                }, {scope: "user_status,user_checkins,read_stream"});
-            } else {
-                console.log("response.status=null");
-                $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
-                    transition  : "pop",
-                    role        : "dialog"
-                });
-            }
-        });
-
-    });
+//        FB.Event.subscribe('auth.statusChange', function(response) {
+//            if (response.status === 'connected') {
+//                console.log("response.status=connected");
+//                console.log("userID: " + response.authResponse.userID);
+//                uid = response.authResponse.userID;
+//                $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
+//                    transition: "fade"
+//                });
+//            } else if (response.status === 'not_authorized') {
+//                console.log("response.status=not_authorized");
+//                FB.login(function(response){
+//                }, {scope: "user_status,user_checkins,read_stream"});
+//            } else {
+//                console.log("response.status=null");
+//                $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
+//                    transition  : "pop",
+//                    role        : "dialog"
+//                });
+//            }
+//        });
+//
+//    });
 
 
 
