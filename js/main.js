@@ -1,4 +1,4 @@
-$("document").on("pageshow", "div#fb-root", function() {
+$(document).on("pageshow", "div#fb-root", function() {
        FB.init({
             appId      : "698356506895047", // App ID
             status     : true, // check login status
