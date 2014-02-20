@@ -290,13 +290,13 @@ $(document).on("pageshow", "div#main", function(event) {
         var since = $("input#sincedate").val();
         var until = $("input#untildate").val();
 
-        var $this = $( this );
-        theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme;
-        msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text
-        textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible;
+        var $this = $( this ),
+        theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+        msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+        textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
         textonly = !!$this.jqmData( "textonly" );
         html = $this.jqmData( "html" ) || "";
-        $.mobile.loading( 'show', {
+        $.mobile.loading( "show", {
             text: msgText,
             textVisible: textVisible,
             theme: theme,
