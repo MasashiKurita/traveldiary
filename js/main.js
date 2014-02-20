@@ -1,7 +1,3 @@
-$("div#fb-root").load(function() {
-    console.log("fb loaded");
-});
-
 //    $.ajaxSetup({ cache: true });
 //    $.getScript('//connect.facebook.net/en_UK/all.js', function(){
 //
@@ -83,7 +79,7 @@ $(document).on("pageshow", "div#top", function(event) {
         appId      : "698356506895047", // App ID
         status     : true, // check login status
         cookie     : true, // enable cookies to allow the server to access the session
-        xfbml      : true,  // parse XFBML
+        //xfbml      : true,  // parse XFBML
         oauth      : true
     });
 
