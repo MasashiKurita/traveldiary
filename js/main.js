@@ -140,16 +140,12 @@ $(document).on("pageshow", "div#login", function(event) {
 
     $("a#login-button").on("click", function(){
         FB.login(function(response){
-//            $(":mobile-pagecontainer").pagecontainer("change", "#main", {
-//                transition: "fade"
-//            });
         }, {scope: "user_status,user_checkins,read_stream"});
     });
 
 });
 
 var currentInfoWindow;
-//$(document).on("pageshow", "div#main", function(event) {
 $(document).on("pageshow", "div#main", function(event) {
     console.log(event);
     console.log("div#main showed");
@@ -293,7 +289,9 @@ $(document).on("pageshow", "div#main", function(event) {
         $("div#mapcanvas").empty();
         var since = $("input#sincedate").val();
         var until = $("input#untildate").val();
+        $.mobile.loading("show");
         showCheckins(uid, since, until);
+        $.mobile.loading("hide");
     });
 
 });
