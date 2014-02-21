@@ -208,7 +208,7 @@ $(document).on("pageshow", "div#main", function(event) {
                 });
                 footmark.setMap(map);
 
-                ("div#mapcanvas").css("height",$(document).height);
+                ("div#mapcanvas").css("height",$(document).height());
 
             });
 
