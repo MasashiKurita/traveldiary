@@ -92,13 +92,36 @@
     <!--5.ページの設定-->
     <div data-role="page" id="setup">
         <!--6.ヘッダーの設定-->
-        <div data-role="header" data-position="fixed" data-add-back-btn="true">
+        <div data-role="header" data-position="fixed"
+            data-add-back-btn="true">
             <h1>Setup</h1>
         </div>
 
         <!--7.ページ内容の設定-->
         <div data-role="content" id="content_list">
-            <h1>Setup</h1>
+            <label for="resultperpage" class="select">Result per
+                Page:</label> <select name="resultperpage" id="resultperpage">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="40">40</option>
+            </select>
+
+            <div class="ui-field-contain">
+                <fieldset data-role="controlgroup">
+                    <legend>Display Post Type:</legend>
+                    <input type="checkbox" name="checkbox-1a" id="checkbox-1a" class="custom" checked="checked"><label for="checkbox-1a">Place</label>
+                    <input type="checkbox" name="checkbox-2a" id="checkbox-2a" class="custom" checked="checked"><label for="checkbox-2a">Check-In</label>
+                    <input type="checkbox" name="checkbox-3a" id="checkbox-3a" class="custom" checked="checked"><label for="checkbox-3a">Tagged Photo</label>
+                    <input type="checkbox" name="checkbox-4a" id="checkbox-4a" class="custom" checked="checked"><label for="checkbox-4a">Other</label>
+                </fieldset>
+            </div>
+
+            <label for="flip-1">Display Track Line:</label>
+            <select name="flip-1" id="flip-1" data-role="slider">
+                <option value="on">On</option>
+                <option value="off">Off</option>
+            </select>
         </div>
     </div>
 
