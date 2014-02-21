@@ -5,10 +5,5 @@ div#mapcanvas {
     height  : 100%;
     margin  : 0;
     padding : 0;
-    /*
-    border  : 4px solid #fff;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    */
 }
 
