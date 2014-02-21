@@ -134,7 +134,7 @@ $(document).on("pageshow", "div#main", function(event) {
                         zoom: 3,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
-                $("div#mapcanvas").css("height",($(window).height() - $('div[data-role="header"]').height() - $('div[data-role="footer"]').height()));
+                $("div#mapcanvas").css("height",($(window).height() - $('div[data-role="header"]').height() - $('div[data-role="footer"]').height() - 50));
                 var map = new google.maps.Map(document.getElementById('mapcanvas'), mapOptions);
                 var bounds = new google.maps.LatLngBounds();
 
