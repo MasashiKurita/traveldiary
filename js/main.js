@@ -134,6 +134,7 @@ $(document).on("pageshow", "div#main", function(event) {
                         zoom: 3,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
+                $("div#mapcanvas").css("height",$(document).height());
                 var map = new google.maps.Map(document.getElementById('mapcanvas'), mapOptions);
                 var bounds = new google.maps.LatLngBounds();
 
@@ -207,8 +208,6 @@ $(document).on("pageshow", "div#main", function(event) {
                     }]
                 });
                 footmark.setMap(map);
-
-                ("div#mapcanvas").css("height",$(document).height());
 
             });
 
