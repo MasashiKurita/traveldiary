@@ -145,7 +145,7 @@ $(document).on("pageshow", "div#main", function(event) {
                 var defaultuntil = new Date(1970, 1, 1);
                 var defaultsince = new Date();
                 var checkinlist = $("ul#checkin-list");
-                for(i=(response.data.length-1); i<-1; i--) {
+                for(i=(response.data.length-1); i>-1; i--) {
 
                     if ('place' in response.data[i]) {
                         var data = response.data[i];
