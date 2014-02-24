@@ -118,7 +118,7 @@ $(document).on("pageshow", "div#main", function(event) {
         return dateStr;
     }
 
-    function showCheckins(uid, since, until, prev, next) {
+    function showCheckins(uid, since, until, goprev, gonext) {
         console.log('Welcome!  Fetching your information.... ');
 
         $("ul#checkin-list").empty();
@@ -134,11 +134,11 @@ $(document).on("pageshow", "div#main", function(event) {
 
             //var url = '/' + uid + '/feed?date_format=U&limit=10000&fields=place,story,message';
             var url = "/" + uid + "/feed?";
-            if (prev != null) {
-                console.log("prev != null");
-                url = url + prev;
-            } else if (next != null) {
-                console.log("next != null");
+            if (goprev) {
+                console.log("go prev");
+                url = url + goprev;
+            } else if (gonext) {
+                console.log("go next");
                 url = url + next;
             } else {
                 url = url + "date_format=U&limit=10000&fields=place,story,message";
@@ -222,9 +222,11 @@ $(document).on("pageshow", "div#main", function(event) {
                     }
                 }
 
-                var paging = response.paging;
-                prev = paging.previous.split("?")[1];
-                next = paging.next.split("?")[1];
+                if ("paging" in response) {
+                    var paging = response.paging;
+                    prev = paging.previous.split("?")[1];
+                    next = paging.next.split("?")[1];
+                }
 //                if ('previous' in paging) {
 //                    prev = paging.previous.split("?")[1];
 //                    $("a#prev-button").show();
@@ -276,11 +278,11 @@ $(document).on("pageshow", "div#main", function(event) {
     });
 
     $("a#prev-button").on("click", function() {
-        showCheckins(uid, null, null, prev, null);
+        showCheckins(uid, null, null, true, false);
     });
 
     $("a#next-button").on("click", function() {
-        showCheckins(uid, null, null, null, next);
+        showCheckins(uid, null, null, true, false);
     });
 
     // Filter Button Click Event
