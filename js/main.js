@@ -246,10 +246,10 @@ $(document).on("pageshow", "div#main", function(event) {
                 var paging = response.paging;
                 var prevParams = getUrlVars(paging.previous);
                 var nextParams = getUrlVars(paging.next);
-                prev = prevParams.until;
+                prev = prevParams.since;
                 $("a#prev-button").attr("data-since", prev);
                 console.log("data-since: " + $("a#prev-button").attr("data-since"));
-                next = nextParams.since;
+                next = nextParams.until;
                 $("a#next-button").attr("data-until", next);
                 console.log("data-until: " + $("a#next-button").attr("data-until"));
 //                if ('previous' in paging) {
