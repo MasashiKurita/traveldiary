@@ -129,19 +129,27 @@ $(document).on("pageshow", "div#main", function(event) {
             //var url = '/' + uid + '/feed?date_format=U&limit=10000&fields=place,story,message';
             var url = "/" + uid + "/feed?";
             if (prev != "") {
+                console.log("prev != null");
                 url = url + prev;
             } else if (next != "") {
+                console.log("next != null");
                 url = url + next;
             } else {
                 url = url + "date_format=U&limit=10000&fields=place,story,message";
 
                 if (since != "" && until != "") {
                     url = url + '&since=' + Math.round((new Date(since)).getTime() / 1000) + '&until=' + Math.round((new Date(until)).getTime() / 1000);
+                    console.log("since and until != null");
                 } else if (since != "") {
+                    console.log("since != null");
                     url = url + '&since=' + Math.round((new Date(since)).getTime() / 1000);
                 } else if (until != "") {
+                    console.log("until != null");
                     url = url + '&until=' + Math.round((new Date(until)).getTime() / 1000);
+                } else {
+                    console.log("all == null");
                 }
+
             }
 
             console.log("url: " + url);
