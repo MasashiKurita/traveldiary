@@ -136,7 +136,7 @@ $(document).on("pageshow", "div#main", function(event) {
             var url = "/" + uid + "/feed?";
             if (goprev) {
                 console.log("go prev");
-                url = url + goprev;
+                url = url + prev;
             } else if (gonext) {
                 console.log("go next");
                 url = url + next;
