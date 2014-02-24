@@ -240,6 +240,11 @@ $(document).on("pageshow", "div#main", function(event) {
                     }
                 }
 
+
+                console.log(response.paging);
+                var paging = response.paging;
+                var vars1 = getUrlVars(paging.previous);
+                var vars2 = getUrlVars(paging.next);
                 if (response.paging != null) {
                     var paging = response.paging;
                     var vars1 = getUrlVars(paging.previous);
