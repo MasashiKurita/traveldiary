@@ -134,10 +134,10 @@ $(document).on("pageshow", "div#main", function(event) {
 
             //var url = '/' + uid + '/feed?date_format=U&limit=10000&fields=place,story,message';
             var url = "/" + uid + "/feed?";
-            if (prev != "") {
+            if (prev != null) {
                 console.log("prev != null");
                 url = url + prev;
-            } else if (next != "") {
+            } else if (next != null) {
                 console.log("next != null");
                 url = url + next;
             } else {
