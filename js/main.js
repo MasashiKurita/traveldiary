@@ -122,7 +122,7 @@ $(document).on("pageshow", "div#main", function(event) {
         console.log("getUrlVars: url: " + url);
         var params = url.split("?")[1].split("&");
         console.log(params);
-        var paramarray = new array();
+        var paramarray = new Object();
         for (i=0; i<params.length; i++) {
             var key = params[i].split("=")[0];
             var value = params[i].split("=")[1];
