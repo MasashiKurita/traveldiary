@@ -259,7 +259,11 @@ $(document).on("pageshow", "div#main", function(event) {
     });
 
     $("a#prev-button").on("click", function() {
-        showCheckins(uid, null, null, prev, next);
+        showCheckins(uid, null, null, prev, null);
+    });
+
+    $("a#next-button").on("click", function() {
+        showCheckins(uid, null, null, null, next);
     });
 
     // Filter Button Click Event
