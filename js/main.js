@@ -142,7 +142,7 @@ $(document).on("pageshow", "div#main", function(event) {
                 }
             } else if (gonext) {
                 console.log("go next");
-                url = url + "&" + next;
+                url = url + "&since=" + next;
                 if (until != "") {
                     url = url + "&until=" + until;
                 }
