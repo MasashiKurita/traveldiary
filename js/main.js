@@ -208,7 +208,7 @@ $(document).on("pageshow", "div#main", function(event) {
                     }
                 }
 
-                var response.paging;
+                var paging = response.paging;
                 if ('previous' in paging) {
                     prev = paging.previous.split("?")[1];
                     $("a#prev-button").show();
