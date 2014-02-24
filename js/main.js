@@ -152,13 +152,13 @@ $(document).on("pageshow", "div#main", function(event) {
                 console.log("go prev");
                 url = url + "&until=" + prev;
                 if (since != "") {
-                    url = url + "&since=" + since;
+                    url = url + "&since=" + Math.round((new Date(since)).getTime() / 1000);
                 }
             } else if (gonext) {
                 console.log("go next");
                 url = url + "&since=" + next;
                 if (until != "") {
-                    url = url + "&until=" + until;
+                    url = url + "&until=" + Math.round((new Date(until)).getTime() / 1000);
                 }
             } else {
 
@@ -264,9 +264,11 @@ $(document).on("pageshow", "div#main", function(event) {
 
                 if (since == "") {
                     $("input#sincedate").val(dateToString(defaultsince));
+                    since = defaultsince;
                 }
                 if (until == "") {
                     $("input#untildate").val(dateToString(defaultuntil));
+                    until = defaultuntil;
                 }
 
                 checkinlist.listview('refresh');
