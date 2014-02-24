@@ -7,6 +7,7 @@ var uid;
 var since;
 var until;
 
+// Top Page initial Process
 $(document).on("pageshow", "div#top", function(event) {
     console.log("div#top showed");
 
@@ -59,6 +60,7 @@ $(document).on("pageshow", "div#top", function(event) {
 
 });
 
+// Login Page initial Process
 $(document).on("pageshow", "div#login", function(event) {
     console.log("div#login showed");
 
@@ -80,6 +82,7 @@ $(document).on("pageshow", "div#login", function(event) {
 
 });
 
+// Main Page initial Process
 var currentInfoWindow;
 $(document).on("pageshow", "div#main", function(event) {
     console.log(event);
@@ -216,14 +219,16 @@ $(document).on("pageshow", "div#main", function(event) {
             });
 
         } catch (e) {
-            console.log(e);
+            console.log("exception caught: " + e);
         }
     };
 
+    // Logout Button Click Event
     $("a#logout-button").on("click", function(){
         FB.logout();
     });
 
+    // Filter Button Click Event
     $("a#filter-button").on("click", function() {
         $("ul#checkin-list").empty();
         $("div#mapcanvas").empty();
