@@ -120,12 +120,12 @@ $(document).on("pageshow", "div#main", function(event) {
 
     function getUrlVars(url) {
         console.log("getUrlVars: url: " + url);
-        var params = url.splice("?")[1].splice("&");
+        var params = url.split("?")[1].split("&");
         console.log(params);
         var paramarray = new array();
         for (i=0; i<params.length; i++) {
-            var key = params[i].splice("=")[0];
-            var value = params[i].splice("=")[1];
+            var key = params[i].split("=")[0];
+            var value = params[i].split("=")[1];
             paramarray[key] = value;
         }
         console.log(paramarray);
