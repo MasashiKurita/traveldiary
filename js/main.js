@@ -247,7 +247,9 @@ $(document).on("pageshow", "div#main", function(event) {
                 var prevParams = getUrlVars(paging.previous);
                 var nextParams = getUrlVars(paging.next);
                 prev = prevParams.until;
+                $("a#prev-button").attr("data-since", prev);
                 next = nextParams.since;
+                $("a#next-button").attr("data-until", next);
 //                if ('previous' in paging) {
 //                    prev = paging.previous.split("?")[1];
 //                    $("a#prev-button").show();
@@ -301,10 +303,16 @@ $(document).on("pageshow", "div#main", function(event) {
     });
 
     $("a#prev-button").on("click", function() {
+        var since = $("input#sincedate").val();
+        var until = $("input#untildate").val();
         showCheckins(uid, since, until, true, false);
     });
 
     $("a#next-button").on("click", function() {
+        var since = $("input#sincedate").val();
+        var until = $("input#untildate").val();
+        prev = $("a#prev-button").attr("data-since");
+        next = $("a#next-button").attr("data-until");
         showCheckins(uid, since, until, false, true);
     });
 
