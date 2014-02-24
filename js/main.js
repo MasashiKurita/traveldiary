@@ -223,19 +223,21 @@ $(document).on("pageshow", "div#main", function(event) {
                 }
 
                 var paging = response.paging;
-                if ('previous' in paging) {
-                    prev = paging.previous.split("?")[1];
-                    $("a#prev-button").show();
-                } else {
-                    $("a#prev-button").hide();
-                }
-
-                if ('next' in paging) {
-                    prev = paging.previous.split("?")[1];
-                    $("a#next-button").show();
-                } else {
-                    $("a#next-button").hide();
-                }
+                prev = paging.previous.split("?")[1];
+                next = paging.next.split("?")[1];
+//                if ('previous' in paging) {
+//                    prev = paging.previous.split("?")[1];
+//                    $("a#prev-button").show();
+//                } else {
+//                    $("a#prev-button").hide();
+//                }
+//
+//                if ('next' in paging) {
+//                    next = paging.next.split("?")[1];
+//                    $("a#next-button").show();
+//                } else {
+//                    $("a#next-button").hide();
+//                }
 
                 if (since == "") {
                     $("input#sincedate").val(dateToString(defaultsince));
