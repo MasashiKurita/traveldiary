@@ -133,15 +133,20 @@ $(document).on("pageshow", "div#main", function(event) {
             console.log("next: " + next);
 
             //var url = '/' + uid + '/feed?date_format=U&limit=10000&fields=place,story,message';
-            var url = "/" + uid + "/feed?";
+            var url = "/" + uid + "/feed?date_format=U&limit=10000&fields=place,story,message";
             if (goprev) {
                 console.log("go prev");
-                url = url + prev;
+                url = url + "&until=" + prev;
+                if (since != "") {
+                    url = url + "&since=" + since;
+                }
             } else if (gonext) {
                 console.log("go next");
-                url = url + next;
+                url = url + "&" + next;
+                if (until != "") {
+                    url = url + "&until=" + until;
+                }
             } else {
-                url = url + "date_format=U&limit=10000&fields=place,story,message";
 
                 if (since != "" && until != "") {
                     url = url + '&since=' + Math.round((new Date(since)).getTime() / 1000) + '&until=' + Math.round((new Date(until)).getTime() / 1000);
@@ -224,8 +229,8 @@ $(document).on("pageshow", "div#main", function(event) {
 
                 if ("paging" in response) {
                     var paging = response.paging;
-                    prev = paging.previous.split("?")[1];
-                    next = paging.next.split("?")[1];
+                    prev = paging.previous.split("since=")[1];
+                    next = paging.next.split("until=")[1];
                 }
 //                if ('previous' in paging) {
 //                    prev = paging.previous.split("?")[1];
@@ -278,11 +283,11 @@ $(document).on("pageshow", "div#main", function(event) {
     });
 
     $("a#prev-button").on("click", function() {
-        showCheckins(uid, null, null, true, false);
+        showCheckins(uid, since, until, true, false);
     });
 
     $("a#next-button").on("click", function() {
-        showCheckins(uid, null, null, true, false);
+        showCheckins(uid, since, until, false, true);
     });
 
     // Filter Button Click Event
