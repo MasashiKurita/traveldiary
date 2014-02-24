@@ -118,6 +118,18 @@ $(document).on("pageshow", "div#main", function(event) {
         return dateStr;
     }
 
+    function getUrlVars(url) {
+        var params = url.splice("?")[1].splice("&");
+        var paramarray = new array();
+        for (i=0; i<params.length; i++) {
+            var key = params[i].splice("=")[0];
+            var value = params[i].splice("=")[1];
+            paramarray[key] = value;
+        }
+        console.log(paramarray);
+        return paramarray;
+    }
+
     function showCheckins(uid, since, until, goprev, gonext) {
         console.log('Welcome!  Fetching your information.... ');
 
@@ -229,6 +241,8 @@ $(document).on("pageshow", "div#main", function(event) {
 
                 if ("paging" in response) {
                     var paging = response.paging;
+                    getUrlVars(paging.previous);
+                    getUrlVars(paging.previous);
                     prev = paging.previous.split("since=")[1];
                     next = paging.next.split("until=")[1];
                 }
