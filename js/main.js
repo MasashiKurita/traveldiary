@@ -208,15 +208,16 @@ $(document).on("pageshow", "div#main", function(event) {
                     }
                 }
 
-                if ('previous' in response.paging) {
-                    prev = response.previous.split("?")[1];
+                var response.paging;
+                if ('previous' in paging) {
+                    prev = paging.previous.split("?")[1];
                     $("a#prev-button").show();
                 } else {
                     $("a#prev-button").hide();
                 }
 
-                if ('next' in response.paging) {
-                    prev = response.previous.split("?")[1];
+                if ('next' in paging) {
+                    prev = paging.previous.split("?")[1];
                     $("a#next-button").show();
                 } else {
                     $("a#next-button").hide();
