@@ -119,16 +119,13 @@ $(document).on("pageshow", "div#main", function(event) {
     }
 
     function getUrlVars(url) {
-        console.log("getUrlVars: url: " + url);
         var params = url.split("?")[1].split("&");
-        console.log(params);
         var paramarray = new Object();
         for (i=0; i<params.length; i++) {
             var key = params[i].split("=")[0];
             var value = params[i].split("=")[1];
             paramarray[key] = value;
         }
-        console.log(paramarray);
         return paramarray;
     }
 
@@ -151,13 +148,11 @@ $(document).on("pageshow", "div#main", function(event) {
             console.log("resultperpage: " + resultperpage);
             var url = "/" + uid + "/feed?date_format=U&limit=" + resultperpage + "&fields=place,story,message";
             if (goprev) {
-                console.log("go prev");
                 url = url + "&until=" + prev;
                 if (since != "") {
                     url = url + "&since=" + Math.round((new Date(since)).getTime() / 1000);
                 }
             } else if (gonext) {
-                console.log("go next");
                 url = url + "&since=" + next;
                 if (until != "") {
                     url = url + "&until=" + Math.round((new Date(until)).getTime() / 1000);
@@ -166,12 +161,9 @@ $(document).on("pageshow", "div#main", function(event) {
 
                 if (since != "" && until != "") {
                     url = url + '&since=' + Math.round((new Date(since)).getTime() / 1000) + '&until=' + Math.round((new Date(until)).getTime() / 1000);
-                    console.log("since and until != null");
                 } else if (since != "") {
-                    console.log("since != null");
                     url = url + '&since=' + Math.round((new Date(since)).getTime() / 1000);
                 } else if (until != "") {
-                    console.log("until != null");
                     url = url + '&until=' + Math.round((new Date(until)).getTime() / 1000);
                 } else {
                     console.log("all == null");
@@ -250,23 +242,8 @@ $(document).on("pageshow", "div#main", function(event) {
                 var nextParams = getUrlVars(paging.next);
                 prev = prevParams.since;
                 $("a#prev-button").attr("data-since", prev);
-                console.log("data-since: " + $("a#prev-button").attr("data-since"));
                 next = nextParams.until;
                 $("a#next-button").attr("data-until", next);
-                console.log("data-until: " + $("a#next-button").attr("data-until"));
-//                if ('previous' in paging) {
-//                    prev = paging.previous.split("?")[1];
-//                    $("a#prev-button").show();
-//                } else {
-//                    $("a#prev-button").hide();
-//                }
-//
-//                if ('next' in paging) {
-//                    next = paging.next.split("?")[1];
-//                    $("a#next-button").show();
-//                } else {
-//                    $("a#next-button").hide();
-//                }
 
                 if (since == "") {
                     $("input#sincedate").val(dateToString(defaultsince));
@@ -306,6 +283,7 @@ $(document).on("pageshow", "div#main", function(event) {
         FB.logout();
     });
 
+    // Prev Button Click Event
     $("a#prev-button").on("click", function() {
         var since = $("input#sincedate").val();
         var until = $("input#untildate").val();
@@ -314,6 +292,7 @@ $(document).on("pageshow", "div#main", function(event) {
         showCheckins(uid, since, until, true, false);
     });
 
+    // Next Button Click Event
     $("a#next-button").on("click", function() {
         var since = $("input#sincedate").val();
         var until = $("input#untildate").val();
