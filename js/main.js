@@ -119,6 +119,7 @@ $(document).on("pageshow", "div#main", function(event) {
     }
 
     function getUrlVars(url) {
+        console.log("getUrlVars: url: " + url);
         var params = url.splice("?")[1].splice("&");
         console.log(params);
         var paramarray = new array();
