@@ -126,6 +126,12 @@ $(document).on("pageshow", "div#main", function(event) {
 
         try {
 
+            console.log("uid: " + uid);
+            console.log("since: " + since);
+            console.log("until: " + until);
+            console.log("prev: " + prev);
+            console.log("next: " + next);
+
             //var url = '/' + uid + '/feed?date_format=U&limit=10000&fields=place,story,message';
             var url = "/" + uid + "/feed?";
             if (prev != "") {
