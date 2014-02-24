@@ -120,6 +120,7 @@ $(document).on("pageshow", "div#main", function(event) {
 
     function getUrlVars(url) {
         var params = url.splice("?")[1].splice("&");
+        console.log(params);
         var paramarray = new array();
         for (i=0; i<params.length; i++) {
             var key = params[i].splice("=")[0];
@@ -241,8 +242,8 @@ $(document).on("pageshow", "div#main", function(event) {
 
                 if ("paging" in response) {
                     var paging = response.paging;
-                    getUrlVars(paging.previous);
-                    getUrlVars(paging.previous);
+                    var vars1 = getUrlVars(paging.previous);
+                    var vars2 = getUrlVars(paging.next);
                     prev = paging.previous.split("since=")[1];
                     next = paging.next.split("until=")[1];
                 }
