@@ -147,7 +147,7 @@ $(document).on("pageshow", "div#main", function(event) {
             console.log("next: " + next);
 
             //var url = '/' + uid + '/feed?date_format=U&limit=10000&fields=place,story,message';
-            console.log("resultperpage: " + $(#resultperpage).val());
+            console.log("resultperpage: " + $("select#resultperpage").val());
             var url = "/" + uid + "/feed?date_format=U&limit=10&fields=place,story,message";
             if (goprev) {
                 console.log("go prev");
