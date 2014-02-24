@@ -305,6 +305,8 @@ $(document).on("pageshow", "div#main", function(event) {
     $("a#prev-button").on("click", function() {
         var since = $("input#sincedate").val();
         var until = $("input#untildate").val();
+        prev = $("a#prev-button").attr("data-since");
+        next = $("a#next-button").attr("data-until");
         showCheckins(uid, since, until, true, false);
     });
 
