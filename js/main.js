@@ -152,19 +152,17 @@ $(document).on("pageshow", "div#main", function(event) {
             console.log("prev: " + prev);
             console.log("next: " + next);
 
-            //var url = '/' + uid + '/feed?date_format=U&limit=10000&fields=place,story,message';
             var resultperpage = $("select#resultperpage").val();
-            console.log("resultperpage: " + resultperpage);
             var url = "/" + uid + "/feed?date_format=U&limit=" + resultperpage + "&fields=place,story,message";
             if (goprev) {
-                url = url + "&until=" + prev;
+                url = url + "&since=" + prev;
                 if (since != "") {
-                    url = url + "&since=" + dateStrToUnixtime(since);
+                    url = url + "&until=" + dateStrToUnixtime(until);
                 }
             } else if (gonext) {
-                url = url + "&since=" + next;
+                url = url + "&until=" + next;
                 if (until != "") {
-                    url = url + "&until=" + dateStrToUnixtime(until);
+                    url = url + "&since=" +  dateStrToUnixtime(since);
                 }
             } else {
 
@@ -207,7 +205,7 @@ $(document).on("pageshow", "div#main", function(event) {
 
                         var place = data.place;
                         var created_time = new Date(parseInt(data.created_time) * 1000);
-                        checkinlist.append('<li style="font-size: 10px;">Checked in ' + place.name + ' on ' + created_time + '.</li>');
+                        checkinlist.append("<li>Checked in " + place.name + " on " + created_time + ".</li>");
 
                         var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
                         bounds.extend(latlng);
