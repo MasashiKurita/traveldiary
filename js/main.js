@@ -9,10 +9,6 @@
 
 
 var uid;
-var since;
-var until;
-var prev;
-var next;
 
 // Top Page initial Process
 $(document).on("pageshow", "div#top", function(event) {
@@ -92,12 +88,9 @@ $(document).on("pageshow", "div#login", function(event) {
 // Main Page initial Process
 var currentInfoWindow;
 $(document).on("pageshow", "div#main", function(event) {
-    console.log(event);
     console.log("div#main showed");
 
-    since = $("input#sincedate").val();
-    until = $("input#untildate").val();
-    showCheckins(uid, since, until, null, null);
+    showCheckins(uid, false, false);
 
     function attachInfoWindow(map, marker, infowindow) {
         google.maps.event.addListener(marker, 'click', function() {
@@ -138,11 +131,13 @@ $(document).on("pageshow", "div#main", function(event) {
         return paramarray;
     }
 
-    function showCheckins(uid, since, until, goprev, gonext) {
+    function showCheckins(uid, goprev, gonext) {
         console.log('Welcome!  Fetching your information.... ');
 
-        $("ul#checkin-list").empty();
-        $("div#mapcanvas").empty();
+        var since = $("input#sincedate").val();
+        var until = $("input#untildate").val();
+        var prev = $("a#prev-button").attr("data-since");
+        var next = $("a#next-button").attr("data-until");
 
         try {
 
@@ -182,6 +177,7 @@ $(document).on("pageshow", "div#main", function(event) {
             FB.api(url, function(response) {
                 console.log(response);
 
+                $("div#mapcanvas").empty();
                 var latlngs = [];
                 var mapOptions = {
                         zoom: 3,
@@ -198,6 +194,7 @@ $(document).on("pageshow", "div#main", function(event) {
                 var defaultuntil = new Date(1970, 1, 1);
                 var defaultsince = new Date();
                 var checkinlist = $("ul#checkin-list");
+                checkinlist.empty();
                 for(i=(response.data.length-1); i>-1; i--) {
 
                     if ('place' in response.data[i]) {
@@ -242,27 +239,6 @@ $(document).on("pageshow", "div#main", function(event) {
                     }
                 }
 
-
-                console.log(response.paging);
-                var paging = response.paging;
-                var prevParams = getUrlVars(paging.previous);
-                var nextParams = getUrlVars(paging.next);
-                prev = prevParams.since;
-                $("a#prev-button").attr("data-since", prev);
-                next = nextParams.until;
-                $("a#next-button").attr("data-until", next);
-
-                if (since == "") {
-                    $("input#sincedate").val(dateToString(defaultsince));
-                    since = defaultsince;
-                }
-                if (until == "") {
-                    $("input#untildate").val(dateToString(defaultuntil));
-                    until = defaultuntil;
-                }
-
-                checkinlist.listview('refresh');
-
                 map.fitBounds(bounds);
 
                 var trackline = $("select#trackline").val();
@@ -281,6 +257,18 @@ $(document).on("pageshow", "div#main", function(event) {
                     footmark.setMap(map);
                 }
 
+                checkinlist.listview('refresh');
+
+                $("a#prev-button").attr("data-since", getUrlVars(response.paging.previous).prev);
+                $("a#next-button").attr("data-until", getUrlVars(response.paging.next).next);
+
+                if (since == "") {
+                    $("input#sincedate").val(dateToString(defaultsince));
+                }
+                if (until == "") {
+                    $("input#untildate").val(dateToString(defaultuntil));
+                }
+
             });
 
         } catch (e) {
@@ -295,26 +283,16 @@ $(document).on("pageshow", "div#main", function(event) {
 
     // Prev Button Click Event
     $("a#prev-button").on("click", function() {
-        var since = $("input#sincedate").val();
-        var until = $("input#untildate").val();
-        prev = $("a#prev-button").attr("data-since");
-        next = $("a#next-button").attr("data-until");
-        showCheckins(uid, since, until, true, false);
+        showCheckins(uid, true, false);
     });
 
     // Next Button Click Event
     $("a#next-button").on("click", function() {
-        var since = $("input#sincedate").val();
-        var until = $("input#untildate").val();
-        prev = $("a#prev-button").attr("data-since");
-        next = $("a#next-button").attr("data-until");
-        showCheckins(uid, since, until, false, true);
+        showCheckins(uid, false, true);
     });
 
     // Filter Button Click Event
     $("a#filter-button").on("click", function() {
-        var since = $("input#sincedate").val();
-        var until = $("input#untildate").val();
 
         var $this = $( this ),
         theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
@@ -330,7 +308,7 @@ $(document).on("pageshow", "div#main", function(event) {
             html: html
         });
 
-        showCheckins(uid, since, until, null, null);
+        showCheckins(uid, false, false);
         $.mobile.loading("hide");
     });
 
