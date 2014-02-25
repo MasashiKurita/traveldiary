@@ -1,3 +1,8 @@
+/*
+ *
+ *
+ *
+ */
 //    $.ajaxSetup({ cache: true });
 //    $.getScript('//connect.facebook.net/en_UK/all.js', function(){
 //    });
@@ -118,6 +123,10 @@ $(document).on("pageshow", "div#main", function(event) {
         return dateStr;
     }
 
+    function dateStrToUnixtime(dateStr) {
+        return Math.round((new Date(dateStr)).getTime() / 1000);
+    }
+
     function getUrlVars(url) {
         var params = url.split("?")[1].split("&");
         var paramarray = new Object();
@@ -150,21 +159,21 @@ $(document).on("pageshow", "div#main", function(event) {
             if (goprev) {
                 url = url + "&until=" + prev;
                 if (since != "") {
-                    url = url + "&since=" + Math.round((new Date(since)).getTime() / 1000);
+                    url = url + "&since=" + dateStrToUnixtime(since);
                 }
             } else if (gonext) {
                 url = url + "&since=" + next;
                 if (until != "") {
-                    url = url + "&until=" + Math.round((new Date(until)).getTime() / 1000);
+                    url = url + "&until=" + dateStrToUnixtime(until);
                 }
             } else {
 
                 if (since != "" && until != "") {
-                    url = url + '&since=' + Math.round((new Date(since)).getTime() / 1000) + '&until=' + Math.round((new Date(until)).getTime() / 1000);
+                    url = url + '&since=' + dateStrToUnixtime(since) + '&until=' + dateStrToUnixtime(until);
                 } else if (since != "") {
-                    url = url + '&since=' + Math.round((new Date(since)).getTime() / 1000);
+                    url = url + '&since=' + dateStrToUnixtime(since);
                 } else if (until != "") {
-                    url = url + '&until=' + Math.round((new Date(until)).getTime() / 1000);
+                    url = url + '&until=' + dateStrToUnixtime(until);
                 } else {
                     console.log("all == null");
                 }
@@ -258,18 +267,21 @@ $(document).on("pageshow", "div#main", function(event) {
 
                 map.fitBounds(bounds);
 
-                var footmark = new google.maps.Polyline({
-                    path: latlngs,
-                    strokeColor: "#FF0000",
-                    strokeOpacity: 1.0,
-                    strokeWeight: 2,
-                    icons: [{
-                        icon: {
-                            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
-                        }
-                    }]
-                });
-                footmark.setMap(map);
+                var trackline = $("select#trackline").val();
+                if (trackline === "on") {
+                    var footmark = new google.maps.Polyline({
+                        path: latlngs,
+                        strokeColor: "#FF0000",
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2,
+                        icons: [{
+                            icon: {
+                                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+                            }
+                        }]
+                    });
+                    footmark.setMap(map);
+                }
 
             });
 
