@@ -28,7 +28,7 @@
 
     <!-- Top Page(Splash Screen) -->
     <div data-role="page" id="top">
-        <div data-role="content" id="content_list">
+        <div data-role="content" id="splashcontent">
             <h1>Travel Diary</h1>
         </div>
     </div>
@@ -76,7 +76,7 @@
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#" data-icon="grid">Summary</a></li>
+                    <li><a href="#accountinfo" data-icon="user">Account Info</a></li>
                     <li><a href="#" data-icon="star">Favs</a></li>
                     <li><a href="#setup" data-icon="gear">Setup</a></li>
                 </ul>
@@ -94,7 +94,7 @@
         </div>
 
         <!-- Setup Content -->
-        <div data-role="content" id="content_list">
+        <div data-role="content" id="setupcontent">
             <label for="resultperpage" class="select">Result per Page:</label>
             <select name="resultperpage" id="resultperpage">
                 <option value="5">5</option>
@@ -118,6 +118,24 @@
                 <option value="on" selected="selected" >On</option>
                 <option value="off">Off</option>
             </select>
+        </div>
+    </div>
+
+    <!-- AccountInfo Page -->
+    <div data-role="page" id="accountinfo">
+
+        <!-- header(fixed) -->
+        <div data-role="header" data-position="fixed" data-add-back-btn="true">
+            <h1>Account Information</h1>
+        </div>
+
+        <div data-role="content" id="accountinfocontent">
+          <label for="username">User Name:</label>
+          <input type="text" id="username" />
+          <label for="email">Email</label>
+          <input type="email" id="email" />
+          <label for="link">Facebook Page</label>
+          <input type="text" id="link" />
         </div>
     </div>
 

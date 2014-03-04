@@ -80,7 +80,7 @@ $(document).on("pageshow", "div#login", function(event) {
 
     $("a#login-button").on("click", function(){
         FB.login(function(response){
-        }, {scope: "user_status,user_checkins,read_stream"});
+        }, {scope: "user_status,user_checkins,read_stream,email"});
     });
 
 });
@@ -314,3 +314,16 @@ $(document).on("pageshow", "div#main", function(event) {
 
 });
 
+//Account Information Page initial Process
+$(document).on("pageshow", "div#accountinfo", function(event) {
+    console.log("div#accountinfo showed");
+    var url = "/" + uid + "/fields?name,email,link";
+    FB.api(url, function(response) {
+        console.log(response);
+
+        $("input#username").val(response.name);
+        $("input#email").val(response.name);
+        $("input#link").val(response.link);
+
+    });
+});
