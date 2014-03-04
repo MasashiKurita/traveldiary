@@ -317,7 +317,7 @@ $(document).on("pageshow", "div#main", function(event) {
 //Account Information Page initial Process
 $(document).on("pageshow", "div#accountinfo", function(event) {
     console.log("div#accountinfo showed");
-    var url = "/" + uid + "/fields?name,email,link";
+    var url = "/" + uid + "?fields=name,email,link";
     FB.api(url, function(response) {
         console.log(response);
 
