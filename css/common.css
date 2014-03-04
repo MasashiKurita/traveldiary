@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+div#content_list {
+    background-image: url("../img/home.jpg");
+    background-repeat: no-repeat;
+}
+
 div#mapcanvas {
     width   : 100%;
     height  : 100%;
