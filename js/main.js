@@ -322,7 +322,7 @@ $(document).on("pageshow", "div#accountinfo", function(event) {
         console.log(response);
 
         $("input#username").val(response.name);
-        $("input#email").val(response.name);
+        $("input#email").val(response.email);
         $("input#link").val(response.link);
 
     });
