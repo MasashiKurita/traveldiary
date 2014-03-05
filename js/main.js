@@ -295,7 +295,7 @@ $(document).on("pageshow", "div#main", function(event) {
             console.log("exception caught: " + e);
             alert(e);
         } finally {
-
+            $.mobile.loading("hide");
         }
     };
 
