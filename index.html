@@ -65,9 +65,9 @@
 
         <!-- Header(fixed) -->
         <div data-role="header" data-position="fixed">
-            <a id="history-button" href="#leftpanel" data-role="button">History</a>
+            <a id="history-button" href="#leftpanel" data-role="button" data-icon="info">History</a>
             <h1>Places</h1>
-            <a id="logout-button" href="#main" data-role="button">Log out</a>
+            <a id="logout-button" href="#main" data-role="button" data-icon="user">Log out</a>
         </div>
 
         <!-- Map Content-->
@@ -79,8 +79,8 @@
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#accountinfo" data-icon="user">Account Info</a></li>
-                    <li><a href="#" data-icon="star">Favs</a></li>
+                    <li><a href="#accountinfo" data-icon="info">Account Info</a></li>
+                    <li><a href="#statistics" data-icon="bars">Stats</a></li>
                     <li><a href="#setup" data-icon="gear">Setup</a></li>
                 </ul>
             </div>
@@ -136,6 +136,18 @@
             <div>User Name: <span id="username"></span></div>
             <div>Email: <span id="email"></span></div>
             <div>Facebook Page: <a id="link" href="" target="_blank" data-rel="external"></a></div>
+        </div>
+    </div>
+
+    <!-- Statistics Page -->
+    <div data-role="page" id="statistics">
+
+        <!-- Header(fixed) -->
+        <div data-role="header" data-position="fixed" data-add-back-btn="true">
+            <h1>Statistics</h1>
+        </div>
+
+        <div data-role="content" id="statisticscontent">
         </div>
     </div>
 

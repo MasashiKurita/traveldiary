@@ -301,16 +301,19 @@ $(document).on("pageshow", "div#main", function(event) {
     // Prev Button Click Event
     $("a#prev-button").on("click", function() {
         showCheckins(true, false);
+        $("div#leftpanel").panel("close");
     });
 
     // Next Button Click Event
     $("a#next-button").on("click", function() {
         showCheckins(false, true);
+        $("div#leftpanel").panel("close");
     });
 
     // Filter Button Click Event
     $("a#filter-button").on("click", function() {
         showCheckins(false, false);
+        $("div#leftpanel").panel("close");
     });
 
 });
@@ -344,5 +347,10 @@ $(document).on("pageshow", "div#accountinfo", function(event) {
 
         $.mobile.loading("hide");
     });
+
+});
+
+//Statistics Page initial Process
+$(document).on("pageshow", "div#statistics", function(event) {
 
 });
