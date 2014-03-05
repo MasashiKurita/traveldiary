@@ -134,26 +134,19 @@ $(document).on("pageshow", "div#main", function(event) {
     function showCheckins(goprev, gonext) {
         console.log('Welcome!  Fetching your information.... ');
 
-        try {
-            var $this = $( this ),
-            theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
-            msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
-            textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
-            textonly = !!$this.jqmData( "textonly" );
-            html = $this.jqmData( "html" ) || "";
-            $.mobile.loading("show", {
-                text: msgText,
-                textVisible: textVisible,
-                theme: theme,
-                textonly: textonly,
-                html: html
-            });
-
-        } catch(e) {
-            console.log(e);
-        } finally {
-
-        }
+        var $this = $( this ),
+        theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+        msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+        textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+        textonly = !!$this.jqmData( "textonly" );
+        html = $this.jqmData( "html" ) || "";
+        $.mobile.loading("show", {
+            text: msgText,
+            textVisible: textVisible,
+            theme: theme,
+            textonly: textonly,
+            html: html
+        });
 
         var since = $("input#sincedate").val();
         var until = $("input#untildate").val();
@@ -317,23 +310,7 @@ $(document).on("pageshow", "div#main", function(event) {
 
     // Filter Button Click Event
     $("a#filter-button").on("click", function() {
-
-        var $this = $( this ),
-        theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
-        msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
-        textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
-        textonly = !!$this.jqmData( "textonly" );
-        html = $this.jqmData( "html" ) || "";
-        $.mobile.loading( "show", {
-            text: msgText,
-            textVisible: textVisible,
-            theme: theme,
-            textonly: textonly,
-            html: html
-        });
-
         showCheckins(false, false);
-        $.mobile.loading("hide");
     });
 
 });
@@ -341,6 +318,20 @@ $(document).on("pageshow", "div#main", function(event) {
 //Account Information Page initial Process
 $(document).on("pageshow", "div#accountinfo", function(event) {
     console.log("div#accountinfo showed");
+    var $this = $( this ),
+    theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+    msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+    textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+    textonly = !!$this.jqmData( "textonly" );
+    html = $this.jqmData( "html" ) || "";
+    $.mobile.loading("show", {
+        text: msgText,
+        textVisible: textVisible,
+        theme: theme,
+        textonly: textonly,
+        html: html
+    });
+
     var url = "/" + uid + "?fields=name,email,link";
     FB.api(url, function(response) {
         console.log(response);
@@ -351,31 +342,7 @@ $(document).on("pageshow", "div#accountinfo", function(event) {
         $("a#link").attr("href", link)
                    .html(link);
 
-    });
-
-    // Load Button Click Event
-    $("a#load-test").on("click", function() {
-        try {
-            var $this = $( this ),
-            theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
-            msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
-            textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
-            textonly = !!$this.jqmData( "textonly" );
-            html = $this.jqmData( "html" ) || "";
-            $.mobile.loading("show", {
-                text: msgText,
-                textVisible: textVisible,
-                theme: theme,
-                textonly: textonly,
-                html: html
-            });
-
-        } catch(e) {
-            console.log(e);
-        } finally {
-
-        }
-
+        $.mobile.loading("hide");
     });
 
 });
