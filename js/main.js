@@ -27,7 +27,7 @@ $(document).on("pageshow", "div#top", function(event) {
             console.log("response.status=connected");
             console.log("userID: " + response.authResponse.userID);
             uid = response.authResponse.userID;
-            $( ":mobile-pagecontainer" ).pagecontainer("change", "#main", {
+            $.mobile.pageContainer.pagecontainer("change", "#main", {
                 transition: "fade"
             });
         } else if (response.status === 'not_authorized') {
@@ -36,7 +36,7 @@ $(document).on("pageshow", "div#top", function(event) {
             }, {scope: "user_status,user_checkins,read_stream"});
         } else {
             console.log("response.status=null");
-            $( ":mobile-pagecontainer" ).pagecontainer("change", "#login", {
+            $.mobile.pageContainer.pagecontainer("change", "#login", {
                 transition  : "pop",
                 role        : "dialog"
             });
@@ -49,11 +49,11 @@ $(document).on("pageshow", "div#top", function(event) {
             if (response.status === 'connected') {
                 console.log("response.session=not null");
                 uid = response.authResponse.userID;
-                $(":mobile-pagecontainer").pagecontainer("change", "#main", {
+                $.mobile.pageContainer.pagecontainer("change", "#main", {
                     transition: "fade"
                 });
             } else {
-                $(":mobile-pagecontainer").pagecontainer("change", "#login", {
+                $.mobile.pageContainer.pagecontainer("change", "#login", {
                     transition  : "pop",
                     role        : "dialog"
                 });
@@ -72,7 +72,7 @@ $(document).on("pageshow", "div#login", function(event) {
         if (response.status === 'connected') {
             console.log("response.session=not null");
             uid = response.authResponse.userID;
-            $(":mobile-pagecontainer").pagecontainer("change", "#main", {
+            $.mobile.pageContainer.pagecontainer("change", "#main", {
                 transition: "fade"
             });
         }
