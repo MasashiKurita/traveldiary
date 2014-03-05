@@ -14,6 +14,8 @@ var uid;
 $(document).on("pageshow", "div#top", function(event) {
     console.log("div#top showed");
 
+    setTimeout(scrollBy, 100, 0, 1);
+
     FB.init({
         appId      : "698356506895047",
         status     : true,
