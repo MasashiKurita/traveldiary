@@ -90,7 +90,8 @@ var currentInfoWindow;
 $(document).on("pageshow", "div#main", function(event) {
     console.log("div#main showed");
 
-    showCheckins(uid, false, false);
+//    showCheckins(uid, false, false);
+    showCheckins(false, false);
 
     function attachInfoWindow(map, marker, infowindow) {
         google.maps.event.addListener(marker, 'click', function() {
@@ -131,7 +132,8 @@ $(document).on("pageshow", "div#main", function(event) {
         return paramarray;
     }
 
-    function showCheckins(uid, goprev, gonext) {
+//    function showCheckins(uid, goprev, gonext) {
+    function showCheckins(goprev, gonext) {
         console.log('Welcome!  Fetching your information.... ');
 
         var since = $("input#sincedate").val();
@@ -283,12 +285,14 @@ $(document).on("pageshow", "div#main", function(event) {
 
     // Prev Button Click Event
     $("a#prev-button").on("click", function() {
-        showCheckins(uid, true, false);
+//        showCheckins(uid, true, false);
+        showCheckins(true, false);
     });
 
     // Next Button Click Event
     $("a#next-button").on("click", function() {
-        showCheckins(uid, false, true);
+//        showCheckins(uid, false, true);
+        showCheckins(false, true);
     });
 
     // Filter Button Click Event
@@ -308,7 +312,8 @@ $(document).on("pageshow", "div#main", function(event) {
             html: html
         });
 
-        showCheckins(uid, false, false);
+//        showCheckins(uid, false, false);
+        showCheckins(false, false);
         $.mobile.loading("hide");
     });
 
