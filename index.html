@@ -47,14 +47,14 @@
         <div id="leftpanel" data-role="panel" data-theme="a" data-display="overlay" data-position="left">
             <div data-role="fieldcontain">
                 <div>
-                    <a id="prev-button" class="ui-btn-inline ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" data-since=""></a>
-                    <a id="next-button" class="ui-btn ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" data-until=""></a>
+                    <a id="prev-button" data-role="button" class="ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" data-since=""></a>
+                    <a id="next-button" data-role="button" class="ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" data-until=""></a>
                 </div>
-                <label for="sincedate">Since:</label>
-                <input id="sincedate" type="date">
-                <label for="untildate">Until:</label>
-                <input id="untildate" type="date">
-                <a id="filter-button" data-role="button">Filter</a>
+                <div>
+                    <label for="sincedate">Since:</label><input id="sincedate" type="date">
+                    <label for="untildate">Until:</label><input id="untildate" type="date">
+                    <a id="filter-button" data-role="button">Filter</a>
+                </div>
             </div>
             <h3>History</h3>
             <ul id="checkin-list" data-role="listview"></ul>
