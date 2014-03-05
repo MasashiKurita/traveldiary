@@ -321,8 +321,8 @@ $(document).on("pageshow", "div#accountinfo", function(event) {
     FB.api(url, function(response) {
         console.log(response);
 
-        $("label#username").html(response.name);
-        $("label#email").html(response.email);
+        $("span#username").html(response.name);
+        $("spanl#email").html(response.email);
         var link = response.link;
         $("a#link").attr("href", link)
                    .html(link);
