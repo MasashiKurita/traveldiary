@@ -133,26 +133,6 @@ $(document).on("pageshow", "div#main", function(event) {
 
     function showCheckins(goprev, gonext) {
         console.log('Welcome!  Fetching your information.... ');
-        try {
-            var $this = $( this ),
-            theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
-            msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
-            textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
-            textonly = !!$this.jqmData( "textonly" );
-            html = $this.jqmData( "html" ) || "";
-            $.mobile.loading("show", {
-                text: msgText,
-                textVisible: textVisible,
-                theme: theme,
-                textonly: textonly,
-                html: html
-            });
-
-        } catch(e) {
-            console.log(e);
-        } finally {
-
-        }
 
         var since = $("input#sincedate").val();
         var until = $("input#untildate").val();
@@ -196,6 +176,27 @@ $(document).on("pageshow", "div#main", function(event) {
             console.log("url: " + url);
             FB.api(url, function(response) {
                 console.log(response);
+
+                try {
+                    var $this = $( this ),
+                    theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+                    msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+                    textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+                    textonly = !!$this.jqmData( "textonly" );
+                    html = $this.jqmData( "html" ) || "";
+                    $.mobile.loading("show", {
+                        text: msgText,
+                        textVisible: textVisible,
+                        theme: theme,
+                        textonly: textonly,
+                        html: html
+                    });
+
+                } catch(e) {
+                    console.log(e);
+                } finally {
+
+                }
 
                 $("div#mapcanvas").empty();
                 var latlngs = [];
@@ -289,13 +290,13 @@ $(document).on("pageshow", "div#main", function(event) {
                     $("input#untildate").val(dateToString(defaultuntil));
                 }
 
+                $.mobile.loading("hide");
             });
 
         } catch (e) {
             console.log("exception caught: " + e);
             alert(e);
         } finally {
-//            $.mobile.loading("hide");
         }
     };
 
