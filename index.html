@@ -88,7 +88,7 @@
     <!-- Setup Page -->
     <div data-role="page" id="setup">
 
-        <!-- header(fixed) -->
+        <!-- Header(fixed) -->
         <div data-role="header" data-position="fixed" data-add-back-btn="true">
             <h1>Setup</h1>
         </div>
@@ -97,10 +97,10 @@
         <div data-role="content" id="setupcontent">
             <label for="resultperpage" class="select">Result per Page:</label>
             <select name="resultperpage" id="resultperpage">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="40" selected="selected" >40</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="150">150</option>
+                <option value="200" selected="selected" >200</option>
             </select>
 
             <div class="ui-field-contain">
@@ -124,17 +124,15 @@
     <!-- AccountInfo Page -->
     <div data-role="page" id="accountinfo">
 
-        <!-- header(fixed) -->
+        <!-- Header(fixed) -->
         <div data-role="header" data-position="fixed" data-add-back-btn="true">
             <h1>Account Information</h1>
         </div>
 
         <div data-role="content" id="accountinfocontent">
-            <ul data-role="listview">
-                <li>User Name: <span id="username"></span></li>
-                <li>Email: <span id="email"></span></li>
-                <li data-role="none">Facebook Page: <a id="link" href="" target="_blank" data-rel="external" data-role="none"></a></li>
-            </ul>
+            <div>User Name: <span id="username"></span></div>
+            <div>Email: <span id="email"></span></div>
+            <div>Facebook Page: <a id="link" href="" target="_blank" data-rel="external"></a></div>
         </div>
     </div>
 
