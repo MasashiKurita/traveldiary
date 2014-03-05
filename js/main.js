@@ -273,6 +273,9 @@ $(document).on("pageshow", "div#main", function(event) {
 
         } catch (e) {
             console.log("exception caught: " + e);
+            alert(e);
+        } finally {
+
         }
     };
 
@@ -331,19 +334,27 @@ $(document).on("pageshow", "div#accountinfo", function(event) {
 
     // Load Button Click Event
     $("a#load-test").on("click", function() {
-        var $this = $( this ),
-        theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
-        msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
-        textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
-        textonly = !!$this.jqmData( "textonly" );
-        html = $this.jqmData( "html" ) || "";
-        $.mobile.loading("show", {
-            text: msgText,
-            textVisible: textVisible,
-            theme: theme,
-            textonly: textonly,
-            html: html
-        });
+        try {
+            var $this = $( this ),
+            theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+            msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+            textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+            textonly = !!$this.jqmData( "textonly" );
+            html = $this.jqmData( "html" ) || "";
+            $.mobile.loading("show", {
+                text: msgText,
+                textVisible: textVisible,
+                theme: theme,
+                textonly: textonly,
+                html: html
+            });
+
+        } catch(e) {
+            console.log(e);
+        } finally {
+
+        }
+
     });
 
 });
