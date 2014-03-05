@@ -321,11 +321,11 @@ $(document).on("pageshow", "div#accountinfo", function(event) {
     FB.api(url, function(response) {
         console.log(response);
 
-        $("label#username").val(response.name);
-        $("label#email").val(response.email);
+        $("label#username").html(response.name);
+        $("label#email").html(response.email);
         var link = response.link;
-        $("a#link").val(link)
-                   .attr("href", link);
+        $("a#link").attr("href", link)
+                   .html(link);
 
     });
 });
