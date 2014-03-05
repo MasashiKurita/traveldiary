@@ -322,7 +322,7 @@ $(document).on("pageshow", "div#accountinfo", function(event) {
         console.log(response);
 
         $("span#username").html(response.name);
-        $("spanl#email").html(response.email);
+        $("span#email").html(response.email);
         var link = response.link;
         $("a#link").attr("href", link)
                    .html(link);
