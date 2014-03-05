@@ -90,27 +90,6 @@ var currentInfoWindow;
 $(document).on("pageshow", "div#main", function(event) {
     console.log("div#main showed");
 
-    try {
-        var $this = $( this ),
-        theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
-        msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
-        textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
-        textonly = !!$this.jqmData( "textonly" );
-        html = $this.jqmData( "html" ) || "";
-        $.mobile.loading("show", {
-            text: msgText,
-            textVisible: textVisible,
-            theme: theme,
-            textonly: textonly,
-            html: html
-        });
-
-    } catch(e) {
-        console.log(e);
-    } finally {
-
-    }
-
     showCheckins(false, false);
 
     function attachInfoWindow(map, marker, infowindow) {
@@ -154,6 +133,27 @@ $(document).on("pageshow", "div#main", function(event) {
 
     function showCheckins(goprev, gonext) {
         console.log('Welcome!  Fetching your information.... ');
+
+        try {
+            var $this = $( this ),
+            theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+            msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+            textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+            textonly = !!$this.jqmData( "textonly" );
+            html = $this.jqmData( "html" ) || "";
+            $.mobile.loading("show", {
+                text: msgText,
+                textVisible: textVisible,
+                theme: theme,
+                textonly: textonly,
+                html: html
+            });
+
+        } catch(e) {
+            console.log(e);
+        } finally {
+
+        }
 
         var since = $("input#sincedate").val();
         var until = $("input#untildate").val();
