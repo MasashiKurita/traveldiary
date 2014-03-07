@@ -3,10 +3,10 @@
 .ui-dialog-contain {
   width     : 92.5%;
   max-width : 500px;
-  margin    : 20% auto 25px auto;
+  margin    : 50% auto 15px auto;
   padding   : 0;
   position  : relative;
-  top       : -25px;;
+  top       : -15px;;
 }
 
 div#splashcontent {
