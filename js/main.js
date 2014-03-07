@@ -37,8 +37,8 @@ $(document).on("pageshow", "div#top", function(event) {
         } else {
             console.log("response.status=null");
             $.mobile.pageContainer.pagecontainer("change", "#login", {
-                transition  : "pop",
-                role        : "dialog"
+//                transition  : "pop",
+//                role        : "dialog"
             });
         }
     });
@@ -54,8 +54,8 @@ $(document).on("pageshow", "div#top", function(event) {
                 });
             } else {
                 $.mobile.pageContainer.pagecontainer("change", "#login", {
-                    transition  : "pop",
-                    role        : "dialog"
+//                    transition  : "pop",
+//                    role        : "dialog"
                 });
             }
         });
@@ -158,12 +158,6 @@ $(document).on("pageshow", "div#main", function(event) {
         var next = $("a#next-button").attr("data-until");
 
         try {
-
-            console.log("uid: " + uid);
-            console.log("since: " + since);
-            console.log("until: " + until);
-            console.log("prev: " + prev);
-            console.log("next: " + next);
 
             var resultperpage = $("select#resultperpage").val();
             var url = "/" + uid + "/feed?date_format=U&limit=" + resultperpage + "&fields=place,story,message";
