@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 div#splashcontent {
-    width             : 100%;
-    height            : 100%;
-    background-image  : url("../img/home.jpg");
+    width             : 640;
+    height            : 960;
+    background-image  : url("../img/default.png");
     background-size   : contain;
     background-repeat : no-repeat;
 }
