@@ -80,6 +80,9 @@ $(document).on("pageshow", "div#login", function(event) {
 
     $("a#login-button").on("click", function(){
         FB.login(function(response){
+            $.mobile.pageContainer.pagecontainer("change", "#main", {
+                transition: "fade"
+            });
         }, {scope: "user_status,user_checkins,read_stream,email"});
     });
 
