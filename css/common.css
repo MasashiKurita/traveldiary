@@ -10,7 +10,7 @@
   top       : auto;
   */
   position  : relative;
-  top       : 50%;
+  bottom    : 50%;
 }
 
 div#splashcontent {
