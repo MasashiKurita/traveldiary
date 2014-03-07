@@ -80,6 +80,7 @@ $(document).on("pageshow", "div#login", function(event) {
 
     $("a#login-button").on("click", function(){
         FB.login(function(response){
+            alert("Logged In!");
             $.mobile.pageContainer.pagecontainer("change", "#main", {
                 transition: "fade"
             });
