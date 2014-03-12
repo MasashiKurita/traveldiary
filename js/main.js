@@ -78,14 +78,14 @@ $(document).on("pageshow", "div#login", function(event) {
         }
     });
 
-    $("a#login-button").on("click", function(){
+    $("a#login-button").on("click", function(event){
 
         if (("standalone" in window.navigator) && window.navigator.standalone) {
             // For iOS Apps
             e.preventDefault();
             var new_location = $(this).attr('href');
             if (new_location != undefined && new_location.substr(0, 1) != '#' && $(this).attr('data-method') == undefined){
-                window.location = new_location;
+                window.location = "http://masashikurita.github.io/traveldiary/#main";
             }
         }
 
@@ -96,9 +96,7 @@ $(document).on("pageshow", "div#login", function(event) {
                 transition: "fade"
             });
         }, {
-            scope: "user_status,user_checkins,read_stream,email",
-            redirect_uri: "http://masashikurita.github.io/traveldiary/#main",
-            display: "touch"
+            scope: "user_status,user_checkins,read_stream,email"
         });
     });
 
