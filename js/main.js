@@ -81,12 +81,13 @@ $(document).on("pageshow", "div#login", function(event) {
     $("a#login-button").on("click", function(event){
 
         if (("standalone" in window.navigator) && window.navigator.standalone) {
+            alert("standalone");
             // For iOS Apps
-            e.preventDefault();
-            var new_location = $(this).attr('href');
-            if (new_location != undefined && new_location.substr(0, 1) != '#' && $(this).attr('data-method') == undefined){
-                window.location = "http://masashikurita.github.io/traveldiary/#main";
-            }
+//            event.preventDefault();
+//            var new_location = $(this).attr('href');
+//            if (new_location != undefined && new_location.substr(0, 1) != '#' && $(this).attr('data-method') == undefined){
+//                window.location = "http://masashikurita.github.io/traveldiary/#main";
+//            }
         }
 
         FB.login(function(response){
