@@ -81,10 +81,15 @@ $(document).on("pageshow", "div#login", function(event) {
     $("a#login-button").on("click", function(){
         FB.login(function(response){
             alert("Logged In!");
+            alert(window.location);
             $.mobile.pageContainer.pagecontainer("change", "#main", {
                 transition: "fade"
             });
-        }, {scope: "user_status,user_checkins,read_stream,email"});
+        }, {
+            scope: "user_status,user_checkins,read_stream,email",
+            redirect_uri: "http://masashikurita.github.io/traveldiary/#main",
+            display: "touch"
+        });
     });
 
 });
