@@ -91,13 +91,11 @@ $(document).on("pageshow", "div#login", function(event) {
         }
 
         FB.login(function(response){
-            alert("Logged In!");
-            alert(window.location);
             $.mobile.pageContainer.pagecontainer("change", "#main", {
                 transition: "fade"
             });
         }, {
-            scope: "user_status,user_checkins,read_stream,email"
+            scope: "user_status,user_checkins,read_stream,email,user_events"
         });
     });
 
@@ -108,7 +106,8 @@ var currentInfoWindow;
 $(document).on("pageshow", "div#main", function(event) {
     console.log("div#main showed");
 
-    showCheckins(false, false);
+//    showCheckins(false, false);
+    showEvents();
 
     function attachInfoWindow(map, marker, infowindow) {
         google.maps.event.addListener(marker, 'click', function() {
@@ -141,7 +140,7 @@ $(document).on("pageshow", "div#main", function(event) {
     function getUrlVars(url) {
         var params = url.split("?")[1].split("&");
         var paramarray = new Object();
-        for (i=0; i<params.length; i++) {
+        for (var i=0; i<params.length; i++) {
             var key = params[i].split("=")[0];
             var value = params[i].split("=")[1];
             paramarray[key] = value;
@@ -149,6 +148,69 @@ $(document).on("pageshow", "div#main", function(event) {
         return paramarray;
     }
 
+    function showEvents() {
+        console.log("Welcome! fetching events.... ");
+
+        try {
+
+            FB.api("/fql",{
+                q: "SELECT name, venue FROM event WHERE creator = 1449310858633062"
+            }, function(response){
+                var data = response.data;
+
+                var latlngs = [];
+                var mapOptions = {
+                        zoom: 3,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                $("div#mapcanvas").css({
+                    height  : ($(document).height() - $('div[data-role="header"]').height() - $('div[data-role="footer"]').height() - 30),
+                    margin  : 0,
+                    padding : 0
+                });
+                var map = new google.maps.Map(document.getElementById('mapcanvas'), mapOptions);
+                var bounds = new google.maps.LatLngBounds();
+
+                for (var i=0; i<data.length; i++) {
+
+                    var venue = data.venue;
+
+                    var latlng = new google.maps.LatLng(venue.latitude, venue.longitude);
+                    bounds.extend(latlng);
+                    latlngs.push(latlng);
+
+                    var marker = new google.maps.Marker({
+                        position: latlng,
+                        map: map,
+                        title:data.name
+                    });
+
+                    var content = data.name;
+                    var infowindow = new google.maps.InfoWindow({
+                        content: content
+                    });
+
+                    attachInfoWindow(map, marker, infowindow);
+
+                }
+
+                map.fitBounds(bounds);
+
+            });
+        } catch (e) {
+            console.log(e);
+        } finally {
+
+        }
+    }
+
+    /*
+     * Show google map with marker
+     *
+     * @param {boolean} goprev if true show next page
+     * @param {boolean} gonext if true show prev page
+     *
+     */
     function showCheckins(goprev, gonext) {
         console.log('Welcome!  Fetching your information.... ');
 
@@ -157,7 +219,7 @@ $(document).on("pageshow", "div#main", function(event) {
         msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
         textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
         textonly = !!$this.jqmData( "textonly" );
-        html = $this.jqmData( "html" ) || "";
+        var html = $this.jqmData( "html" ) || "";
         $.mobile.loading("show", {
             text: msgText,
             textVisible: textVisible,
@@ -221,7 +283,7 @@ $(document).on("pageshow", "div#main", function(event) {
                 var defaultsince = new Date();
                 var checkinlist = $("ul#checkin-list");
                 checkinlist.empty();
-                for(i=(response.data.length-1); i>-1; i--) {
+                for(var i=(response.data.length-1); i>-1; i--) {
 
                     if ('place' in response.data[i]) {
                         var data = response.data[i];
@@ -338,7 +400,7 @@ $(document).on("pageshow", "div#accountinfo", function(event) {
     msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
     textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
     textonly = !!$this.jqmData( "textonly" );
-    html = $this.jqmData( "html" ) || "";
+    var html = $this.jqmData( "html" ) || "";
     $.mobile.loading("show", {
         text: msgText,
         textVisible: textVisible,
