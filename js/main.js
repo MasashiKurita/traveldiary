@@ -156,6 +156,8 @@ $(document).on("pageshow", "div#main", function(event) {
             FB.api("/fql",{
                 q: "SELECT name, venue FROM event WHERE creator = 1449310858633062"
             }, function(response){
+                console.log(response);
+
                 var data = response.data;
 
                 var latlngs = [];
