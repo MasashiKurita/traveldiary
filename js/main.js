@@ -158,8 +158,6 @@ $(document).on("pageshow", "div#main", function(event) {
             }, function(response){
                 console.log(response);
 
-                var data = response.data;
-
                 var latlngs = [];
                 var mapOptions = {
                         zoom: 3,
@@ -173,8 +171,9 @@ $(document).on("pageshow", "div#main", function(event) {
                 var map = new google.maps.Map(document.getElementById('mapcanvas'), mapOptions);
                 var bounds = new google.maps.LatLngBounds();
 
-                for (var i=0; i<data.length; i++) {
+                for (var i=0; i<response.data.length; i++) {
 
+                    var data = response.data[i];
                     var venue = data.venue;
 
                     var latlng = new google.maps.LatLng(venue.latitude, venue.longitude);
