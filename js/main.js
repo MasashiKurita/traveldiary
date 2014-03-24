@@ -188,8 +188,10 @@ $(document).on("pageshow", "div#main", function(event) {
                     var location = data.location;
 
                     var item = '<li class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-li-static ui-body-inherit ui-first-child ui-collapsible-collapsed" data-role="collapsible">'
-                             + '    <h4>' +  data.name + '</h4>'
-                             + '    <p>' + data.description + '</p>'
+                             + '    <h4 class="ui-collapsible-heading ui-collapsible-heading-collapsed">' +  data.name + '</h4>'
+                             + '    <div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">'
+                             + '        <p>' + data.description + '</p>'
+                             + '    </div'
                              + '</li>';
                     checkinlist.append(item);
 
