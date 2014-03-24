@@ -181,7 +181,7 @@ $(document).on("pageshow", "div#main", function(event) {
                 var map = new google.maps.Map(document.getElementById('mapcanvas'), mapOptions);
                 var bounds = new google.maps.LatLngBounds();
                 var checkinlist = $("div#checkin-list");
-                var items;
+                var items = "";
                 //checkinlist.empty();
                 for (var i=0; i<response.data.length; i++) {
 
