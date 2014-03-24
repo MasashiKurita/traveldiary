@@ -194,8 +194,8 @@ $(document).on("pageshow", "div#main", function(event) {
                              + '        <p>' + data.description + '</p>'
                              + '    </div'
                              + '</div>';
-                    items = items + item;
-                    //checkinlist.append(item);
+                    //items = items + item;
+                    checkinlist.append(item);
 
                     var latlng = new google.maps.LatLng(location.latitude, location.longitude);
                     bounds.extend(latlng);
@@ -219,7 +219,7 @@ $(document).on("pageshow", "div#main", function(event) {
 
                 map.fitBounds(bounds);
 
-                checkinlist.append(items);
+                //checkinlist.append(items);
                 checkinlist.collapsibleset('refresh');
                 $("div.event-item").trigger('create');
                 //checkinlist.listview('refresh');
