@@ -186,7 +186,7 @@ $(document).on("pageshow", "div#main", function(event) {
                     var data = response.data[i];
                     var location = data.location;
 
-                    var item = '<div class="event-item" data-role="collapsible">'
+                    var item = '<div data-role="collapsible">'
                              + '    <h4>' +  data.name + '</h4>'
                              + '    <div>'
                              + '        <p>' + data.description + '</p>'
@@ -217,8 +217,6 @@ $(document).on("pageshow", "div#main", function(event) {
                 map.fitBounds(bounds);
 
                 checkinlist.collapsibleset('refresh');
-                //$("div.event-item").trigger('create');
-                //checkinlist.listview('refresh');
 
             });
         } catch (e) {
