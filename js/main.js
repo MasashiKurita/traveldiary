@@ -187,7 +187,11 @@ $(document).on("pageshow", "div#main", function(event) {
                     var data = response.data[i];
                     var location = data.location;
 
-                    checkinlist.append("<li>" + data.name + "</li>");
+                    var item = '<li data-role="collapsible">'
+                             + '    <h4>' +  data.name + '</h4>'
+                             + '    <p>' + data.description + '</p>'
+                             + '</li>';
+                    checkinlist.append(item);
 
                     var latlng = new google.maps.LatLng(location.latitude, location.longitude);
                     bounds.extend(latlng);
