@@ -9,13 +9,15 @@
 
 
 var uid;
+const APP_ID = "698356506895047";
+const PAGE_ID ="1449310858633062";
 
 // Top Page initial Process
 $(document).on("pageshow", "div#top", function(event) {
     console.log("div#top showed");
 
     FB.init({
-        appId      : "698356506895047",
+        appId      : APP_ID,
         status     : true,
         cookie     : true,
         xfbml      : true,
@@ -148,13 +150,22 @@ $(document).on("pageshow", "div#main", function(event) {
         return paramarray;
     }
 
+    /*
+     * Show google map with marker
+     *
+     * @param {boolean} goprev if true show next page
+     * @param {boolean} gonext if true show prev page
+     *
+     */
     function showEvents() {
         console.log("Welcome! fetching events.... ");
 
         try {
 
             FB.api("/fql",{
-                q: "SELECT name, venue FROM event WHERE creator = 1449310858633062"
+                //q: "SELECT name, venue FROM event WHERE creator = " + PAGE_ID
+                q: "SELECT name, description, location FROM page"
+                 + "WHERE page_id IN (SELECT venue.id FROM event WHERE creator = " + PAGE_ID + ")"
             }, function(response){
                 console.log(response);
 
@@ -170,13 +181,16 @@ $(document).on("pageshow", "div#main", function(event) {
                 });
                 var map = new google.maps.Map(document.getElementById('mapcanvas'), mapOptions);
                 var bounds = new google.maps.LatLngBounds();
-
+                var checkinlist = $("ul#checkin-list");
+                checkinlist.empty();
                 for (var i=0; i<response.data.length; i++) {
 
                     var data = response.data[i];
-                    var venue = data.venue;
+                    var location = data.location;
 
-                    var latlng = new google.maps.LatLng(venue.latitude, venue.longitude);
+                    checkinlist.append("<li>" + data.name + "</li>");
+
+                    var latlng = new google.maps.LatLng(location.latitude, location.longitude);
                     bounds.extend(latlng);
                     latlngs.push(latlng);
 
@@ -196,6 +210,8 @@ $(document).on("pageshow", "div#main", function(event) {
                 }
 
                 map.fitBounds(bounds);
+
+                checkinlist.listview('refresh');
 
             });
         } catch (e) {
@@ -410,12 +426,12 @@ $(document).on("pageshow", "div#accountinfo", function(event) {
         html: html
     });
 
-    var url = "/" + uid + "?fields=name,email,link";
+    var url = "/" + PAGE_ID;
     FB.api(url, function(response) {
         console.log(response);
 
         $("span#username").html(response.name);
-        $("span#email").html(response.email);
+        $("span#about").html(response.about);
         var link = response.link;
         $("a#link").attr("href", link)
                    .html(link);
