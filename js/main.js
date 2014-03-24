@@ -187,7 +187,7 @@ $(document).on("pageshow", "div#main", function(event) {
                     var data = response.data[i];
                     var location = data.location;
 
-                    var item = '<li data-role="collapsible">'
+                    var item = '<li class="ui-collapsible.ui-collapsible-inset.ui-corner-all.ui-collapsible-themed-content.ui-li-static.ui-body-inherit.ui-first-child.ui-collapsible-collapsed" data-role="collapsible">'
                              + '    <h4>' +  data.name + '</h4>'
                              + '    <p>' + data.description + '</p>'
                              + '</li>';
