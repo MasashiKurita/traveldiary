@@ -188,13 +188,13 @@ $(document).on("pageshow", "div#main", function(event) {
                     var data = response.data[i];
                     var location = data.location;
 
-                    item = item
-                             + '<div class="event-item" data-role="collapsible">'
+                    var item = '<div class="event-item" data-role="collapsible">'
                              + '    <h4>' +  data.name + '</h4>'
                              + '    <div>'
                              + '        <p>' + data.description + '</p>'
                              + '    </div'
                              + '</div>';
+                    items = items + item;
                     //checkinlist.append(item);
 
                     var latlng = new google.maps.LatLng(location.latitude, location.longitude);
