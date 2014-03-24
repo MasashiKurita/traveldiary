@@ -180,20 +180,22 @@ $(document).on("pageshow", "div#main", function(event) {
                 });
                 var map = new google.maps.Map(document.getElementById('mapcanvas'), mapOptions);
                 var bounds = new google.maps.LatLngBounds();
-                var checkinlist = $("ul#checkin-list");
+                var checkinlist = $("div#checkin-list");
+                var items;
                 //checkinlist.empty();
                 for (var i=0; i<response.data.length; i++) {
 
                     var data = response.data[i];
                     var location = data.location;
 
-                    var item = '<li class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-li-static ui-body-inherit ui-first-child ui-collapsible-collapsed" data-role="collapsible">'
-                             + '    <h4 class="ui-collapsible-heading ui-collapsible-heading-collapsed">' +  data.name + '</h4>'
-                             + '    <div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">'
+                    item = item
+                             + '<div class="event-item" data-role="collapsible">'
+                             + '    <h4>' +  data.name + '</h4>'
+                             + '    <div>'
                              + '        <p>' + data.description + '</p>'
                              + '    </div'
-                             + '</li>';
-                    checkinlist.append(item);
+                             + '</div>';
+                    //checkinlist.append(item);
 
                     var latlng = new google.maps.LatLng(location.latitude, location.longitude);
                     bounds.extend(latlng);
@@ -217,7 +219,10 @@ $(document).on("pageshow", "div#main", function(event) {
 
                 map.fitBounds(bounds);
 
-                checkinlist.listview('refresh');
+                checkinlist.append(items);
+                checkinlist.collapsibleset('refresh');
+                $("div.event-item").trigger('create');
+                //checkinlist.listview('refresh');
 
             });
         } catch (e) {
