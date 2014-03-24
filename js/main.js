@@ -181,8 +181,6 @@ $(document).on("pageshow", "div#main", function(event) {
                 var map = new google.maps.Map(document.getElementById('mapcanvas'), mapOptions);
                 var bounds = new google.maps.LatLngBounds();
                 var checkinlist = $("div#checkin-list");
-                var items = "";
-                //checkinlist.empty();
                 for (var i=0; i<response.data.length; i++) {
 
                     var data = response.data[i];
@@ -194,7 +192,6 @@ $(document).on("pageshow", "div#main", function(event) {
                              + '        <p>' + data.description + '</p>'
                              + '    </div'
                              + '</div>';
-                    //items = items + item;
                     checkinlist.append(item);
 
                     var latlng = new google.maps.LatLng(location.latitude, location.longitude);
@@ -219,9 +216,8 @@ $(document).on("pageshow", "div#main", function(event) {
 
                 map.fitBounds(bounds);
 
-                //checkinlist.append(items);
                 checkinlist.collapsibleset('refresh');
-                $("div.event-item").trigger('create');
+                //$("div.event-item").trigger('create');
                 //checkinlist.listview('refresh');
 
             });
