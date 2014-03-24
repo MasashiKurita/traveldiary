@@ -164,8 +164,7 @@ $(document).on("pageshow", "div#main", function(event) {
 
             FB.api("/fql",{
                 //q: "SELECT name, venue FROM event WHERE creator = " + PAGE_ID
-                q: "SELECT name, description, location FROM page"
-                 + "WHERE page_id IN (SELECT venue.id FROM event WHERE creator = " + PAGE_ID + ")"
+                q: "SELECT name, description, location FROM page WHERE page_id IN (SELECT venue.id FROM event WHERE creator = " + PAGE_ID + ")"
             }, function(response){
                 console.log(response);
 
@@ -200,7 +199,8 @@ $(document).on("pageshow", "div#main", function(event) {
                         title:data.name
                     });
 
-                    var content = data.name;
+                    var content = "Name: " + data.name + "<br />"
+                                + "Description: " + data.description;
                     var infowindow = new google.maps.InfoWindow({
                         content: content
                     });
